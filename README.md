@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# B2Acapital
 
-## Getting Started
+**Agentic Trading Infrastructure**
 
-First, run the development server:
+B2Acapital is the first marketplace built for AI trading agents — giving retail investors access to the same institutional-grade tools, data, and intelligence that hedge funds have always had.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What is B2A?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+B2A stands for Business to Agent. While most platforms build AI tools for humans, B2Acapital builds for agents. Retail traders are the sponsors. Their AI agents are the operators. The marketplace is the infrastructure layer connecting them to premium capabilities they could not otherwise access or afford.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## The Problem
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Hedge funds have entire engineering teams building custom agent infrastructure — real-time data feeds, sentiment engines, risk modules, and dark pool monitors. The retail trader has none of this. Current AI trading agents are only as good as what was baked into them at build time. There is no dynamic, protocol-native marketplace where an agent can discover and consume new capabilities on demand.
 
-## Learn More
+## The Solution
 
-To learn more about Next.js, take a look at the following resources:
+B2Acapital is the App Store for AI trading agents. A protocol-native marketplace where agents discover, request, and consume capability upgrades — with humans as the approving payment layer. Built on MCP (Model Context Protocol), the standard AI agents already speak. Natively compatible with OpenClaw agents.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How It Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Trader connects their AI trading agent to B2Acapital via MCP
+2. Agent discovers available capability modules in the marketplace
+3. Agent identifies what it needs and surfaces the request to its human
+4. Human reviews, approves, and pays — the capability is unlocked
+5. Agent operates with upgraded intelligence — better data, sharper analysis, tighter risk controls
 
-## Deploy on Vercel
+## Marketplace Modules
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Data Feeds** — Real-time market data, news and sentiment, options flow, dark pool activity
+- **Analytical Tools** — Technical analysis engines, pattern recognition, volatility calculators, backtesting
+- **Risk Management** — Position sizing, stop loss automation, drawdown monitors, daily loss limits
+- **Execution Layer** — Brokerage API connections, order routing, paper trading simulation
+- **Agent Memory** — Persistent strategy memory, trader preference storage, market regime memory
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack
+
+- **Frontend** — React + Next.js, Tailwind CSS, Vercel
+- **Backend** — Node.js, Supabase, PostgreSQL, Redis
+- **Agent Infrastructure** — MCP Protocol, Claude API, OpenClaw compatible
+- **Payments** — Stripe
+
+## Status
+
+Currently in private beta — landing page live at [b2acapital.ai](https://b2acapital.ai) with waitlist collection active.
+
+## Roadmap
+
+**Phase 1 — Foundation** *(Months 1–2)*
+Landing page, user auth, core MCP server scaffold, first data feed modules, Stripe billing
+
+**Phase 2 — Marketplace Launch** *(Months 3–4)*
+Full marketplace UI, module discovery, human approval interface, Alpaca brokerage integration, beta onboarding
+
+**Phase 3 — Ecosystem Growth** *(Months 5–6)*
+Third-party module submissions, mobile approval flow, agent performance reporting, paid tier launch
+
+## The Core Insight
+
+Everyone is racing to build AI tools for humans. B2Acapital builds for agents. The emotionless, data-driven nature of AI agents is the structural advantage — retail traders lose money primarily due to emotional decision-making. B2Acapital gives every retail trader a professional, unbiased co-pilot that never panics and never gets greedy.
+
+---
+
+*B2Acapital — Confidential — Agentic Trading Infrastructure — b2acapital.ai*
