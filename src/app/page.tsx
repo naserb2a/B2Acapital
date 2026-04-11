@@ -735,33 +735,41 @@ export default function HomePage() {
           .agent-card-wrap { display: none !important; }
         }
         @media (max-width: 768px) {
+          /* Matrix background — fade out on mobile */
+          .matrix-bg { opacity: 0.35 !important; }
           /* Nav */
           .nav-desktop { display: none !important; }
           .nav-hamburger { display: flex !important; }
           .nav-inner { padding: 0 20px !important; }
           /* Hero */
-          .hero-grid { padding: 72px 20px 44px !important; gap: 28px !important; }
-          .hero-h1 { font-size: 29px !important; line-height: 1.05 !important; }
-          .hero-h2 { font-size: 31px !important; line-height: 1.05 !important; margin-bottom: 20px !important; }
-          .hero-body { font-size: 15px !important; line-height: 1.6 !important; margin-bottom: 24px !important; }
-          .hero-trust { gap: 6px !important; margin-top: 12px !important; flex-wrap: nowrap !important; }
+          .hero-grid { padding: 64px 20px 36px !important; gap: 24px !important; }
+          .hero-h1 { font-size: 36px !important; line-height: 1.05 !important; }
+          .hero-h2 { font-size: 30px !important; line-height: 1.05 !important; margin-bottom: 16px !important; }
+          .hero-body { font-size: 14px !important; line-height: 1.6 !important; margin-bottom: 20px !important; }
+          .hero-trust { gap: 6px !important; margin-top: 10px !important; flex-wrap: nowrap !important; }
           .hero-trust > span { font-size: 9px !important; gap: 6px !important; }
           /* Quote */
-          .quote-section { padding: 2rem 1.5rem !important; }
+          .quote-section { padding: 1.5rem 1.5rem !important; }
           /* Stats */
           .stat-num { font-size: 26px !important; }
+          /* Eyebrow labels */
+          .eyebrow-label { font-size: 10px !important; letter-spacing: 0.18em !important; }
           /* Section headings */
-          .section-h2 { font-size: 32px !important; margin-bottom: 40px !important; }
+          .section-h2 { font-size: 28px !important; margin-bottom: 28px !important; }
+          /* Subtext */
+          .seq-subtext { font-size: 13px !important; }
           /* Bento */
-          .bento-section { padding: 56px 0 !important; }
-          .bento-row1 { grid-template-columns: 1fr !important; gap: 12px !important; margin-bottom: 12px !important; }
-          .bento-row2 { grid-template-columns: 1fr !important; gap: 12px !important; }
-          .bento-card-content { padding: 18px 20px 20px !important; }
+          .bento-section { padding: 40px 0 !important; }
+          .bento-row1 { grid-template-columns: 1fr !important; gap: 10px !important; margin-bottom: 10px !important; }
+          .bento-row2 { grid-template-columns: 1fr !important; gap: 10px !important; }
+          .bento-card-content { padding: 14px 16px 16px !important; }
           /* Marketplace */
-          .preview-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
-          .preview-section { padding: 64px 0 !important; }
+          .preview-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+          .preview-section { padding: 44px 0 !important; }
           /* Agent sequence */
-          .agent-seq-row { flex-direction: column !important; gap: 12px !important; }
+          .seq-section { padding: 44px 0 !important; }
+          .seq-header { margin-bottom: 36px !important; }
+          .agent-seq-row { flex-direction: column !important; gap: 10px !important; }
           .agent-seq-connector { display: none !important; }
           /* Stats bar */
           .stats-row { gap: 0 !important; }

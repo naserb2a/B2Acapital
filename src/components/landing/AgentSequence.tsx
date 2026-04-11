@@ -98,6 +98,7 @@ export default function AgentSequence() {
   return (
     <section
       ref={ref}
+      className="seq-section"
       style={{
         background: "#080c12",
         padding: "80px 0",
@@ -106,7 +107,7 @@ export default function AgentSequence() {
     >
       <style>{`
         @media (max-width: 768px) {
-          .agent-seq-row { flex-direction: column !important; }
+          .agent-seq-row { flex-direction: column !important; gap: 10px !important; }
           .agent-seq-connector { display: none !important; }
           .agent-seq-row > * { width: 100% !important; flex: none !important; }
         }
@@ -114,11 +115,11 @@ export default function AgentSequence() {
       <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 2rem" }}>
 
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 64 }}>
+        <div className="seq-header" style={{ textAlign: "center", marginBottom: 64 }}>
           {/* Eyebrow */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
             <div style={{ width: 24, height: 1, background: "#4d9fff" }} />
-            <span style={{
+            <span className="eyebrow-label" style={{
               fontSize: 11, letterSpacing: "0.14em", color: "#4d9fff",
               fontFamily: MONO, fontWeight: 600, textTransform: "uppercase",
             }}>
@@ -128,6 +129,7 @@ export default function AgentSequence() {
           </div>
 
           <motion.h2
+            className="section-h2"
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: "easeOut" }}
@@ -140,6 +142,7 @@ export default function AgentSequence() {
           </motion.h2>
 
           <motion.p
+            className="seq-subtext"
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}

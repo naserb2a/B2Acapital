@@ -187,6 +187,7 @@ export default function MatrixBackground() {
   return (
     <canvas
       ref={canvasRef}
+      className="matrix-bg"
       style={{
         position: "fixed",
         top: 0,
