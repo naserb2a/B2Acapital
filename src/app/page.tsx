@@ -136,7 +136,7 @@ function StatItem({ num, suffix, label, trigger }: { num: number; suffix: string
   const count = useCountUp(num, trigger);
   return (
     <div style={{ textAlign: "center", flex: 1 }}>
-      <div style={{ fontSize: 36, fontWeight: 600, color: "#eef2ff", fontFamily: MONO, letterSpacing: "-0.02em", lineHeight: 1 }}>
+      <div className="stat-num" style={{ fontSize: 36, fontWeight: 600, color: "#eef2ff", fontFamily: MONO, letterSpacing: "-0.02em", lineHeight: 1 }}>
         {count}{suffix}
       </div>
       <div style={{ fontSize: 10, color: "#7a8aab", fontFamily: MONO, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 8 }}>
@@ -382,6 +382,7 @@ function BentoGrid() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
+          className="section-h2"
           style={{
             textAlign: "center", fontSize: 48, fontWeight: 600,
             letterSpacing: "-0.03em", color: "#eef2ff",
@@ -405,7 +406,7 @@ function BentoGrid() {
             <div style={{ padding: "28px 28px 0", borderBottom: "0.5px solid rgba(99,157,255,0.08)" }}>
               <NodeNetworkSVG />
             </div>
-            <div style={{ padding: "24px 28px 28px" }}>
+            <div className="bento-card-content" style={{ padding: "24px 28px 28px" }}>
               <span style={{ fontSize: 11, color: "#4d9fff", fontFamily: MONO, letterSpacing: "0.1em", fontWeight: 600 }}>01</span>
               <div style={{ fontSize: 20, fontWeight: 500, color: "#eef2ff", fontFamily: SANS, margin: "8px 0 10px" }}>
                 Agent-Native Infrastructure
@@ -428,7 +429,7 @@ function BentoGrid() {
             <div style={{ padding: "28px 28px 0", borderBottom: "0.5px solid rgba(61,214,140,0.08)" }}>
               <ApprovalSVG />
             </div>
-            <div style={{ padding: "24px 28px 28px" }}>
+            <div className="bento-card-content" style={{ padding: "24px 28px 28px" }}>
               <span style={{ fontSize: 11, color: "#3dd68c", fontFamily: MONO, letterSpacing: "0.1em", fontWeight: 600 }}>02</span>
               <div style={{ fontSize: 20, fontWeight: 500, color: "#eef2ff", fontFamily: SANS, margin: "8px 0 10px" }}>
                 Human in Control
@@ -454,7 +455,7 @@ function BentoGrid() {
             <div style={{ padding: "24px 24px 0" }}>
               <BarChartSVG />
             </div>
-            <div style={{ padding: "16px 24px 24px" }}>
+            <div className="bento-card-content" style={{ padding: "16px 24px 24px" }}>
               <span style={{ fontSize: 11, color: "#4d9fff", fontFamily: MONO, letterSpacing: "0.1em", fontWeight: 600 }}>03</span>
               <div style={{ fontSize: 17, fontWeight: 500, color: "#eef2ff", fontFamily: SANS, margin: "8px 0 8px" }}>
                 Institutional Edge
@@ -498,7 +499,7 @@ function BentoGrid() {
             <div style={{ padding: "24px 24px 0" }}>
               <ProtocolSVG />
             </div>
-            <div style={{ padding: "16px 24px 24px" }}>
+            <div className="bento-card-content" style={{ padding: "16px 24px 24px" }}>
               <span style={{ fontSize: 11, color: "#4d9fff", fontFamily: MONO, letterSpacing: "0.1em", fontWeight: 600 }}>05</span>
               <div style={{ fontSize: 17, fontWeight: 500, color: "#eef2ff", fontFamily: SANS, margin: "8px 0 8px" }}>
                 MCP Native
@@ -527,7 +528,7 @@ function MarketplacePreview() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section style={{ background: "#0d1420", padding: "120px 0" }}>
+    <section className="preview-section" style={{ background: "#0d1420", padding: "120px 0" }}>
       <div ref={ref} style={{ maxWidth: 1080, margin: "0 auto", padding: "0 2rem" }}>
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
@@ -541,6 +542,7 @@ function MarketplacePreview() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
+          className="section-h2"
           style={{ textAlign: "center", fontSize: 46, fontWeight: 600, letterSpacing: "-0.03em", color: "#eef2ff", fontFamily: SANS, margin: "0 auto 12px", maxWidth: 600 }}
         >
           The Module Marketplace
@@ -738,21 +740,30 @@ export default function HomePage() {
           .nav-hamburger { display: flex !important; }
           .nav-inner { padding: 0 20px !important; }
           /* Hero */
-          .hero-grid { padding: 96px 20px 60px !important; gap: 40px !important; }
-          .hero-h1 { font-size: 36px !important; }
-          .hero-h2 { font-size: 36px !important; }
+          .hero-grid { padding: 72px 20px 44px !important; gap: 28px !important; }
+          .hero-h1 { font-size: 29px !important; line-height: 1.05 !important; }
+          .hero-h2 { font-size: 31px !important; line-height: 1.05 !important; margin-bottom: 20px !important; }
+          .hero-body { font-size: 15px !important; line-height: 1.6 !important; margin-bottom: 24px !important; }
+          .hero-trust { gap: 6px !important; margin-top: 12px !important; flex-wrap: nowrap !important; }
+          .hero-trust > span { font-size: 9px !important; gap: 6px !important; }
           /* Quote */
-          .quote-section { padding: 3rem 1.5rem !important; }
-          /* Bento */
-          .bento-section { padding: 80px 0 !important; }
-          .bento-row1 { grid-template-columns: 1fr !important; }
-          .bento-row2 { grid-template-columns: 1fr !important; }
-          /* Marketplace */
-          .preview-grid { grid-template-columns: 1fr !important; }
-          /* Agent sequence */
-          .agent-seq-row { flex-direction: column !important; }
-          .agent-seq-connector { display: none !important; }
+          .quote-section { padding: 2rem 1.5rem !important; }
           /* Stats */
+          .stat-num { font-size: 26px !important; }
+          /* Section headings */
+          .section-h2 { font-size: 32px !important; margin-bottom: 40px !important; }
+          /* Bento */
+          .bento-section { padding: 56px 0 !important; }
+          .bento-row1 { grid-template-columns: 1fr !important; gap: 12px !important; margin-bottom: 12px !important; }
+          .bento-row2 { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .bento-card-content { padding: 18px 20px 20px !important; }
+          /* Marketplace */
+          .preview-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .preview-section { padding: 64px 0 !important; }
+          /* Agent sequence */
+          .agent-seq-row { flex-direction: column !important; gap: 12px !important; }
+          .agent-seq-connector { display: none !important; }
+          /* Stats bar */
           .stats-row { gap: 0 !important; }
         }
       `}</style>
@@ -913,6 +924,7 @@ export default function HomePage() {
 
             {/* Body */}
             <motion.p
+              className="hero-body"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 16 }}
               transition={{ duration: 0.7, delay: 0.5 }}
@@ -940,6 +952,7 @@ export default function HomePage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: heroVisible ? 1 : 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
+              className="hero-trust"
               style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 20, flexWrap: "wrap" }}
             >
               {["MCP Protocol Native", "Human-in-the-loop", "Emotionless Execution"].map((t, i) => (
