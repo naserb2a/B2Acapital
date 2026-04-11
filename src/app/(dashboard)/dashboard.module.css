@@ -1,0 +1,21 @@
+/*
+  Scoped overrides for the dashboard shell.
+  Prevents body font-family and body background from bleeding into dashboard pages.
+*/
+.root {
+  font-family: var(--font-geist-sans);
+  background: var(--db-bg);
+  color: var(--db-ink);
+}
+
+.root *,
+.root *::before,
+.root *::after {
+  box-sizing: border-box;
+}
+
+/* Scrollbar styling for dashboard */
+.root ::-webkit-scrollbar        { width: 5px; height: 5px; }
+.root ::-webkit-scrollbar-track  { background: transparent; }
+.root ::-webkit-scrollbar-thumb  { background: var(--db-border-mid); border-radius: 4px; }
+.root ::-webkit-scrollbar-thumb:hover { background: var(--db-border-hi); }

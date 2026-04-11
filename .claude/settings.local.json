@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sv http://localhost:3000/)",
+      "Bash(python3:*)",
+      "Bash(npm run:*)",
+      "Bash(curl:*)",
+      "mcp__figma__get_design_context",
+      "mcp__figma__get_screenshot",
+      "Bash(claude mcp:*)",
+      "mcp__stitch__create_project",
+      "mcp__nano-banana__generate_image",
+      "mcp__nano-banana__get_configuration_status",
+      "Bash(npx nano-banana-mcp:*)",
+      "Bash(pkill -f \"nano-banana-mcp\")",
+      "Bash(node -e ':*)",
+      "Bash(pkill -f \"nano-banana\")",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(wait)",
+      "Bash(npx next:*)",
+      "Bash(node_modules/.bin/next build:*)",
+      "Bash(pkill -f \"next build\")",
+      "Bash(npx skills:*)",
+      "Bash(gh auth:*)",
+      "Bash(brew install:*)",
+      "Bash(ssh:*)",
+      "Bash(claude plugin:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node -e \"require\\('geist/font/sans'\\)\")",
+      "Bash(xargs sed -i '' 's|var\\(--font-dm-mono, '\\\\''DM Mono'\\\\'', monospace\\)|var\\(--font-geist-mono\\)|g;:*)",
+      "Bash(claude update:*)"
+    ]
+  }
+}
