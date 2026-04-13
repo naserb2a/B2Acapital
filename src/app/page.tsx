@@ -743,8 +743,8 @@ export default function HomePage() {
           .nav-inner { padding: 0 20px !important; }
           /* Hero */
           .hero-grid { padding: 64px 20px 36px !important; gap: 24px !important; }
-          .hero-h1 { font-size: 36px !important; line-height: 1.05 !important; }
-          .hero-h2 { font-size: 30px !important; line-height: 1.05 !important; margin-bottom: 20px !important; }
+          .hero-h1 { font-size: 34px !important; line-height: 1.1 !important; margin-bottom: 14px !important; }
+          .hero-h2 { font-size: 28px !important; line-height: 1.1 !important; margin-bottom: 20px !important; }
           .hero-body { font-size: 14px !important; line-height: 1.6 !important; margin-bottom: 24px !important; }
           .hero-trust { gap: 8px !important; margin-top: 12px !important; flex-wrap: nowrap !important; justify-content: center !important; }
           .hero-tag { color: #666666 !important; font-size: 11px !important; gap: 8px !important; }
@@ -797,7 +797,7 @@ export default function HomePage() {
           padding: "0 48px",
         }}>
           <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "baseline", letterSpacing: 0 }}>
-            <span style={{ color: "#99E1D9", fontWeight: 700, fontSize: 15, fontFamily: "var(--font-geist-sans)", letterSpacing: 0 }}>Byzant</span>
+            <span style={{ color: "#99E1D9", fontWeight: 700, fontSize: 21, fontFamily: "var(--font-geist-sans)", letterSpacing: 0 }}>Byzant</span>
           </Link>
 
           {/* Desktop nav links */}
@@ -918,7 +918,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 30 }}
               transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-              style={{ fontSize: 72, fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1, margin: "0 0 6px", color: "#F5F5F5", fontFamily: SANS }}
+              style={{ fontSize: 61, fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.15, margin: "0 0 20px", color: "#F5F5F5", fontFamily: SANS }}
             >
               The market never sleeps.
             </motion.h1>
@@ -927,7 +927,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 30 }}
               transition={{ duration: 0.7, delay: 0.28, ease: "easeOut" }}
-              style={{ fontSize: 72, fontWeight: 300, letterSpacing: "-0.04em", lineHeight: 1, margin: "0 0 32px", color: "#666666", fontFamily: SANS }}
+              style={{ fontSize: 61, fontWeight: 300, letterSpacing: "-0.04em", lineHeight: 1.15, margin: "0 0 32px", color: "#666666", fontFamily: SANS }}
             >
               Neither does your agent.
             </motion.h2>
