@@ -797,7 +797,7 @@ export default function HomePage() {
           padding: "0 48px",
         }}>
           <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "baseline", letterSpacing: 0 }}>
-            <span style={{ color: "#99E1D9", fontWeight: 700, fontSize: 15, fontFamily: "var(--font-playfair)", letterSpacing: 0 }}>Byzant</span>
+            <span style={{ color: "#99E1D9", fontWeight: 700, fontSize: 15, fontFamily: "var(--font-geist-sans)", letterSpacing: 0 }}>Byzant</span>
           </Link>
 
           {/* Desktop nav links */}
@@ -1042,7 +1042,7 @@ export default function HomePage() {
         }}>
           {/* Logo */}
           <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "baseline" }}>
-            <span style={{ color: "#99E1D9", fontWeight: 700, fontSize: 18, fontFamily: "var(--font-playfair)", letterSpacing: 0 }}>Byzant</span>
+            <span style={{ color: "#99E1D9", fontWeight: 700, fontSize: 18, fontFamily: "var(--font-geist-sans)", letterSpacing: 0 }}>Byzant</span>
           </Link>
 
           {/* Copyright */}
