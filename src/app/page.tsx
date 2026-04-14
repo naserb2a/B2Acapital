@@ -918,18 +918,18 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 30 }}
               transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-              style={{ fontSize: 61, fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.15, margin: "0 0 20px", color: "#F5F5F5", fontFamily: SANS }}
+              style={{ fontSize: 61, fontWeight: 300, fontStyle: "italic", letterSpacing: "0.02em", lineHeight: 1.15, margin: "0 0 20px", color: "#94a3b8", fontFamily: "'Playfair Display', serif" }}
             >
-              The market never sleeps.
+              Analysis without emotion.
             </motion.h1>
             <motion.h2
               className="hero-h2"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 30 }}
               transition={{ duration: 0.7, delay: 0.28, ease: "easeOut" }}
-              style={{ fontSize: 61, fontWeight: 300, letterSpacing: "-0.04em", lineHeight: 1.15, margin: "0 0 32px", color: "#666666", fontFamily: SANS }}
+              style={{ fontSize: 61, fontWeight: 400, fontStyle: "normal", letterSpacing: "0.02em", lineHeight: 1.15, margin: "0 0 32px", color: "#F5F5F5", fontFamily: "'Playfair Display', serif" }}
             >
-              Neither does your agent.
+              You are the arbiter.
             </motion.h2>
 
             {/* Body */}
@@ -1004,9 +1004,6 @@ export default function HomePage() {
 
       {/* ── STATS BAR ───────────────────────────────────────────── */}
       <StatsBar />
-
-      {/* ── QUOTE ───────────────────────────────────────────────── */}
-      <QuoteSection />
 
       {/* ── BENTO GRID ──────────────────────────────────────────── */}
       <BentoGrid />
