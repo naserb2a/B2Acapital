@@ -445,95 +445,162 @@ function BentoGrid() {
 
 /* ─── Marketplace Preview ───────────────────────────────────────── */
 const PREVIEW_MODULES = [
-  { name: "Real-Time Market Data", badge: "DATA", desc: "Sub-millisecond quotes, level 2 order book direct to your agent.", price: "$9/mo", color: "#99E1D9" },
-  { name: "Sentiment Analysis", badge: "ANALYTICS", desc: "Earnings signals and news flow parsed for agent consumption.", price: "$29/mo", color: "#B2EBE5" },
-  { name: "Risk Management Suite", badge: "RISK", desc: "Dynamic position sizing and real-time portfolio risk scoring.", price: "$29/mo", color: "#f0b429" },
-  { name: "Dark Pool Monitor", badge: "ANALYTICS", desc: "Institutional block trades and unusual activity alerts.", price: "$29/mo", color: "#B2EBE5" },
+  { name: "Real-Time Market Data",  badge: "DATA",      desc: "Sub-millisecond quotes and level 2 order book direct to your agent.",            price: "$9/mo"  },
+  { name: "Sentiment Analysis",     badge: "ANALYTICS", desc: "Earnings signals and news flow parsed for agent consumption.",                    price: "$29/mo" },
+  { name: "Risk Management Suite",  badge: "RISK",      desc: "Dynamic position sizing and real-time portfolio risk scoring.",                   price: "$29/mo" },
+  { name: "Dark Pool Monitor",      badge: "ANALYTICS", desc: "Institutional block trades and unusual activity alerts.",                         price: "$29/mo" },
+  { name: "Trailing Stop Bot",      badge: "STRATEGY",  desc: "Automated stop loss management that trails as your position gains.",              price: "$29/mo" },
+  { name: "Wheel Strategy Bot",     badge: "STRATEGY",  desc: "Automated put selling and covered call management for premium income.",           price: "$29/mo" },
+  { name: "Whale Tracker",          badge: "PRO",       desc: "Unusual options flow and institutional dark pool activity in real time.",         price: "$29/mo" },
+  { name: "Smart Money Tracker",    badge: "PRO",       desc: "Congressional trade disclosures tracked and surfaced automatically.",             price: "$29/mo" },
+  { name: "Risk Agent",             badge: "PRO",       desc: "Always-on risk enforcement. Monitors every position. Requires approval to override.", price: "$29/mo" },
+  { name: "Copy Trading Bot",       badge: "PRO",       desc: "Mirror top performing politicians and institutional whales automatically.",       price: "$29/mo" },
 ];
 
 function MarketplacePreview() {
   const ref = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
-  return (
-    <section className="preview-section" style={{ background: "#0F0F0F", padding: "120px 0" }}>
-      <div ref={ref} style={{ maxWidth: 1080, margin: "0 auto", padding: "0 2rem" }}>
-        {/* Header */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
-          <div style={{ width: 24, height: "0.5px", background: "#99E1D9" }} />
-          <span style={{ fontSize: 11, letterSpacing: "0.14em", color: "#99E1D9", fontFamily: MONO, fontWeight: 600, textTransform: "uppercase" }}>
-            THE MARKETPLACE
-          </span>
-          <div style={{ width: 24, height: "0.5px", background: "#99E1D9" }} />
-        </div>
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="section-h2"
-          style={{ textAlign: "center", fontSize: 46, fontWeight: 600, letterSpacing: "-0.03em", color: "#F5F5F5", fontFamily: SANS, margin: "0 auto 12px", maxWidth: 600 }}
-        >
-          The Module Marketplace
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          style={{ textAlign: "center", fontSize: 16, color: "#666666", fontFamily: SANS, fontWeight: 300, margin: "0 auto 56px", maxWidth: 480 }}
-        >
-          Your agent discovers. You approve. Institutional tools, retail price.
-        </motion.p>
+  function scroll(dir: "left" | "right") {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir === "right" ? 300 : -300, behavior: "smooth" });
+  }
 
-        {/* Module cards row */}
-        <div className="preview-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 14, marginBottom: 32 }}>
+  return (
+    <section className="preview-section" style={{ background: "#0F0F0F", padding: "120px 0", overflow: "hidden" }}>
+      <div ref={ref} style={{ maxWidth: 1160, margin: "0 auto", padding: "0 2rem" }}>
+
+        {/* Header row: eyebrow + title + subhead left, arrows right */}
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 48, flexWrap: "wrap", gap: 20 }}>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 24, height: "0.5px", background: "#99E1D9" }} />
+              <span style={{ fontSize: 11, letterSpacing: "0.14em", color: "#99E1D9", fontFamily: MONO, fontWeight: 600, textTransform: "uppercase" }}>
+                THE MARKETPLACE
+              </span>
+              <div style={{ width: 24, height: "0.5px", background: "#99E1D9" }} />
+            </div>
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              style={{ fontSize: 40, fontWeight: 600, letterSpacing: "-0.03em", color: "#F5F5F5", fontFamily: SANS, margin: "0 0 10px" }}
+            >
+              The Module Marketplace
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              style={{ fontSize: 15, color: "#666666", fontFamily: SANS, fontWeight: 300, margin: 0 }}
+            >
+              Your agent discovers. You approve. Institutional tools, retail price.
+            </motion.p>
+          </div>
+
+          {/* Arrow buttons */}
+          <div style={{ display: "flex", gap: 10, flexShrink: 0 }}>
+            {(["left", "right"] as const).map(dir => (
+              <button
+                key={dir}
+                onClick={() => scroll(dir)}
+                style={{
+                  width: 40, height: 40, borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  background: "transparent", cursor: "pointer",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  color: "#666666", fontSize: 16, transition: "border-color 0.2s, color 0.2s",
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#99E1D9"; (e.currentTarget as HTMLElement).style.color = "#99E1D9"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLElement).style.color = "#666666"; }}
+                aria-label={dir === "left" ? "Scroll left" : "Scroll right"}
+              >
+                {dir === "left" ? "←" : "→"}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Horizontally scrollable card row */}
+        <div
+          ref={scrollRef}
+          style={{
+            display: "flex",
+            gap: 16,
+            overflowX: "auto",
+            scrollSnapType: "x mandatory",
+            paddingBottom: 12,
+            paddingRight: 48, /* peek effect */
+            msOverflowStyle: "none",
+            scrollbarWidth: "none",
+          }}
+        >
           {PREVIEW_MODULES.map((m, i) => (
             <motion.div
               key={m.name}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+              transition={{ duration: 0.5, delay: 0.08 + i * 0.06 }}
               style={{
-                background: "#0A0A0A",
-                border: "0.5px solid rgba(255,255,255,0.1)",
-                borderRadius: 16, padding: 20,
-                cursor: "default",
+                flex: "0 0 260px",
+                scrollSnapAlign: "start",
+                background: "#141414",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: 12,
+                padding: 24,
+                display: "flex",
+                flexDirection: "column",
                 transition: "border-color 0.2s, transform 0.2s",
               }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.28)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)"; (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(153,225,217,0.25)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)"; (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; }}
             >
+              {/* Badge */}
               <span style={{
                 fontSize: 9, fontWeight: 700, letterSpacing: "0.12em",
-                textTransform: "uppercase", color: m.color,
-                background: `${m.color}18`, border: `0.5px solid ${m.color}33`,
-                padding: "2px 8px", borderRadius: 999, fontFamily: MONO,
-                display: "inline-block", marginBottom: 12,
+                textTransform: "uppercase", color: "#99E1D9",
+                background: "rgba(153,225,217,0.10)", border: "0.5px solid rgba(153,225,217,0.2)",
+                padding: "3px 8px", borderRadius: 999, fontFamily: MONO,
+                display: "inline-block", marginBottom: 14, alignSelf: "flex-start",
               }}>
                 {m.badge}
               </span>
-              <div style={{ fontSize: 14, fontWeight: 500, color: "#F5F5F5", fontFamily: SANS, marginBottom: 8, lineHeight: 1.3 }}>
+
+              {/* Name */}
+              <div style={{ fontSize: 15, fontWeight: 600, color: "#F5F5F5", fontFamily: SANS, marginBottom: 8, lineHeight: 1.3 }}>
                 {m.name}
               </div>
-              <div style={{ fontSize: 11, color: "#666666", fontFamily: SANS, lineHeight: 1.55, marginBottom: 16, flex: 1 }}>
+
+              {/* Desc */}
+              <div style={{ fontSize: 12, color: "#666666", fontFamily: SANS, lineHeight: 1.6, flex: 1, marginBottom: 20 }}>
                 {m.desc}
               </div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <span style={{ fontSize: 12, color: "#99E1D9", fontFamily: MONO }}>{m.price}</span>
-                <span style={{ fontSize: 11, color: "#99E1D9", fontFamily: SANS, cursor: "default" }}>Deploy →</span>
+
+              {/* Price */}
+              <div style={{ fontSize: 13, color: "#99E1D9", fontFamily: MONO, fontWeight: 500, marginBottom: 14 }}>
+                {m.price}
               </div>
+
+              {/* Deploy button */}
+              <Link
+                href="/marketplace"
+                style={{
+                  display: "block", textAlign: "center",
+                  background: "#99E1D9", color: "#0A0A0A",
+                  fontFamily: SANS, fontWeight: 600, fontSize: 13,
+                  padding: "10px 0", borderRadius: 8,
+                  textDecoration: "none",
+                  transition: "background 0.15s",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = "#B2EBE5")}
+                onMouseLeave={e => (e.currentTarget.style.background = "#99E1D9")}
+              >
+                Deploy →
+              </Link>
             </motion.div>
           ))}
-        </div>
-
-        <div style={{ textAlign: "center" }}>
-          <Link
-            href="/dashboard/marketplace"
-            style={{ fontSize: 13, color: "#99E1D9", fontFamily: SANS, textDecoration: "none", letterSpacing: "0.01em" }}
-            onMouseEnter={e => (e.currentTarget.style.color = "#B2EBE5")}
-            onMouseLeave={e => (e.currentTarget.style.color = "#99E1D9")}
-          >
-            Browse all modules →
-          </Link>
         </div>
       </div>
     </section>
@@ -695,8 +762,7 @@ export default function HomePage() {
           .bento-row2 { grid-template-columns: 1fr !important; gap: 10px !important; }
           .bento-card-content { padding: 14px 16px 16px !important; }
           /* Marketplace */
-          .preview-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
-          .preview-section { padding: 44px 0 !important; }
+          .preview-section { padding: 60px 0 !important; }
           /* Agent sequence */
           .seq-section { padding: 44px 0 !important; }
           .seq-header { margin-bottom: 36px !important; }
