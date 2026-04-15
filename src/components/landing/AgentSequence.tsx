@@ -115,9 +115,9 @@ export default function AgentSequence() {
       <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 2rem" }}>
 
         {/* Header */}
-        <div className="seq-header" style={{ textAlign: "center", marginBottom: 64 }}>
+        <div className="seq-header" style={{ textAlign: "left", marginBottom: 64 }}>
           {/* Eyebrow */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
             <div style={{ width: 24, height: 1, background: "#99E1D9" }} />
             <span className="eyebrow-label" style={{
               fontSize: 11, letterSpacing: "0.14em", color: "#99E1D9",

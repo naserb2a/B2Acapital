@@ -477,7 +477,7 @@ function BentoGrid() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}
+          style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}
         >
           <div style={{ width: 24, height: "0.5px", background: "#99E1D9" }} />
           <span style={{ fontSize: 11, letterSpacing: "0.14em", color: "#99E1D9", fontFamily: MONO, fontWeight: 600 }}>
@@ -491,7 +491,7 @@ function BentoGrid() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="section-h2"
-          style={{ textAlign: "center", fontSize: 48, fontWeight: 600, letterSpacing: "-0.03em", color: "#F5F5F5", fontFamily: SANS, margin: "0 auto 64px", maxWidth: 640 }}
+          style={{ textAlign: "left", fontSize: 48, fontWeight: 600, letterSpacing: "-0.03em", color: "#F5F5F5", fontFamily: SANS, margin: "0 0 64px", maxWidth: 640 }}
         >
           Built for how agents actually trade.
         </motion.h2>
@@ -865,7 +865,7 @@ function CTASection({
         background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(153,225,217,0.1) 0%, transparent 70%)",
         pointerEvents: "none",
       }} />
-      <div ref={ref} style={{ position: "relative", maxWidth: 720, margin: "0 auto", padding: "0 2rem", textAlign: "center" }}>
+      <div ref={ref} style={{ position: "relative", maxWidth: 720, margin: "0 auto", padding: "0 2rem", textAlign: "left" }}>
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -911,7 +911,7 @@ function CTASection({
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}
+          style={{ display: "flex", justifyContent: "flex-start", marginBottom: 16 }}
         >
           <WaitlistForm email={email} setEmail={setEmail} submitted={submitted} onSubmit={onSubmit} size="large" />
         </motion.div>
