@@ -84,8 +84,8 @@ opinion without losing control of their money.
 - Hosting: Vercel (auto-deploys from GitHub on push)
 - Payments: Stripe (planned Phase 2)
 - Animation: Framer Motion (landing page)
-- Domain: byzant.ai (planned) — currently live at b2acapital.ai during transition
-- Repo: github.com/naserb2a/B2Acapital
+- Domain: byzant.ai (planned) — currently live at byzant.ai during transition
+- Repo: github.com/naserb2a/Byzant
 
 ---
 
@@ -144,7 +144,7 @@ opinion without losing control of their money.
 ## PROJECT STRUCTURE
 
 ```
-b2acapital/
+byzant/
 ├── app/
 │   ├── page.tsx                    ← Landing page (DO NOT TOUCH)
 │   ├── layout.tsx                  ← Root layout (DO NOT TOUCH)
@@ -187,7 +187,7 @@ b2acapital/
 ## CURRENT BUILD STATUS
 
 ### Phase 1 — COMPLETE
-- Landing page live at b2acapital.ai (byzant.ai transition planned)
+- Landing page live at byzant.ai (byzant.ai transition planned)
 - Supabase auth (login + signup)
 - Dashboard shell with sidebar + topbar
 - All 6 dashboard screens built
@@ -311,7 +311,7 @@ White/broken dashboard after edits:
 ## DEPLOYMENT
 
 Every push to the main branch on GitHub auto-deploys to Vercel.
-Production URL: b2acapital.ai (byzant.ai transition planned)
+Production URL: byzant.ai (byzant.ai transition planned)
 Dev server: localhost:3000 (run: npm run dev)
 Always test locally before pushing.
 
@@ -329,4 +329,4 @@ Target: 500 waitlist signups → Phase 2 launch → paid tier → scale.
 
 ---
 
-Byzant — Confidential — byzant.ai (b2acapital.ai during transition)
+Byzant — Confidential — byzant.ai (byzant.ai during transition)
