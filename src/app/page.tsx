@@ -178,47 +178,6 @@ function StatsBar() {
   );
 }
 
-/* ─── MCP Compatibility Trust Bar ───────────────────────────────── */
-const MCP_AGENTS = ["OpenClaw", "Claude", "GPT-4", "Gemini", "Grok", "LangChain", "Cursor"];
-
-function MCPCompatibilityBar() {
-  return (
-    <div style={{
-      width: "100%",
-      background: "#0d1420",
-      borderTop: "1px solid rgba(255,255,255,0.06)",
-      borderBottom: "1px solid rgba(255,255,255,0.06)",
-      padding: "14px 0",
-    }}>
-      <div style={{
-        maxWidth: 1080, margin: "0 auto", padding: "0 48px",
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        gap: 24, flexWrap: "wrap",
-      }}>
-        <span style={{
-          fontFamily: MONO, fontSize: 11, textTransform: "uppercase",
-          letterSpacing: "0.1em", color: "#4d9fff", whiteSpace: "nowrap", flexShrink: 0,
-        }}>
-          Compatible via MCP Protocol
-        </span>
-        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-          {MCP_AGENTS.map((agent) => (
-            <span key={agent} style={{
-              fontFamily: MONO, fontSize: 11, color: "#94a3b8",
-              border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: 100, padding: "4px 12px",
-              background: "rgba(255,255,255,0.03)",
-              whiteSpace: "nowrap",
-            }}>
-              {agent}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 /* ─── Bento Card Static SVGs (top of card) ──────────────────────── */
 function NodeNetworkSVG() {
   return (
