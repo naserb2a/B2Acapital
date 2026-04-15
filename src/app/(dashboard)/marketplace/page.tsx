@@ -42,7 +42,7 @@ const MODULES: Module[] = [
     id: "ael", name: "Alpaca Execution Layer", category: "Execution",
     desc: "TWAP, VWAP, and iceberg order strategies with slippage optimization and fill reporting.",
     price: "$9/mo", installed: true, usage: 31,
-    iconPath: "M13 2L3 14h9l-1 8 10-12h-9l1-8z", iconColor: "#3dd68c",
+    iconPath: "M13 2L3 14h9l-1 8 10-12h-9l1-8z", iconColor: "#99E1D9",
   },
   {
     id: "dpm", name: "Dark Pool Monitor", category: "Analytics",
@@ -89,7 +89,7 @@ const CATEGORY_COLOR: Record<ModuleCategory, string> = {
   "Data Feeds": "#99E1D9",
   "Analytics": "#B2EBE5",
   "Risk": "#f0b429",
-  "Execution": "#3dd68c",
+  "Execution": "#99E1D9",
   "Memory": "#666666",
 };
 

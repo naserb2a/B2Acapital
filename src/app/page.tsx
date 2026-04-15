@@ -535,7 +535,7 @@ function BentoGrid() {
               <ApprovalSVG />
             </div>
             <div className="bento-card-content" style={{ padding: "24px 28px 20px" }}>
-              <span style={{ fontSize: 11, color: "#3dd68c", fontFamily: MONO, letterSpacing: "0.1em", fontWeight: 600 }}>02</span>
+              <span style={{ fontSize: 11, color: "#99E1D9", fontFamily: MONO, letterSpacing: "0.1em", fontWeight: 600 }}>02</span>
               <div style={{ fontSize: 20, fontWeight: 500, color: "#F5F5F5", fontFamily: SANS, margin: "8px 0 10px" }}>Human in Control</div>
               <div style={{ fontSize: 13, color: "#666666", fontFamily: SANS, lineHeight: 1.6 }}>
                 Your agent surfaces opportunities. You approve. Emotionless analysis without bias, fear, or greed.
@@ -606,7 +606,7 @@ function BentoGrid() {
           >
             <BentoToggleIcon isOpen={openCard === 4} />
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", flex: "0 0 auto" }}>
-              <div style={{ fontSize: 96, fontWeight: 600, fontFamily: MONO, color: "#3dd68c", letterSpacing: "-0.05em", lineHeight: 1, textShadow: "0 0 40px rgba(61,214,140,0.25)" }}>0</div>
+              <div style={{ fontSize: 96, fontWeight: 600, fontFamily: MONO, color: "#99E1D9", letterSpacing: "-0.05em", lineHeight: 1, textShadow: "0 0 40px rgba(153,225,217,0.25)" }}>0</div>
               <div style={{ fontSize: 10, color: "#666666", fontFamily: MONO, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 12, textAlign: "center" }}>
                 Emotional trades<br />detected
               </div>
@@ -1150,8 +1150,8 @@ export default function HomePage() {
               {["OpenClaw", "Claude", "GPT-4", "Gemini", "Grok", "LangChain", "Cursor"].map((agent) => (
                 <span key={agent} style={{
                   fontFamily: MONO, fontSize: 11, fontWeight: 500,
-                  color: "#3dd68c", background: "rgba(0,0,0,0.3)",
-                  border: "1px solid #3dd68c",
+                  color: "#99E1D9", background: "rgba(0,0,0,0.3)",
+                  border: "1px solid #99E1D9",
                   borderRadius: 100, padding: "5px 16px",
                   whiteSpace: "nowrap", textTransform: "uppercase",
                   letterSpacing: "0.1em",

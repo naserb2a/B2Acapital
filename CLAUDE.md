@@ -107,7 +107,7 @@ opinion without losing control of their money.
 --db-ink:          #F5F5F5   (primary text)
 --db-ink-muted:    #666666   (secondary text)
 --db-ink-faint:    #444444   (labels/disabled)
---db-green:        #3dd68c   (success/bullish)
+--db-green:        #99E1D9   (success/bullish)
 --db-green-dim:    rgba(61,214,140,0.10)
 --db-red:          #ff5a5a   (danger/bearish)
 --db-red-dim:      rgba(255,90,90,0.10)
