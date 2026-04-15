@@ -665,7 +665,7 @@ function BentoGrid() {
                 <BentoExpanded>
                   <div style={{ padding: "4px 24px 24px" }}>
                     <p style={expandedTextStyle}>
-                      MCP is the protocol AI agents already speak. Byzant is built on it from day one — not retrofitted. Every module is plug-and-play for any Claude-powered agent.
+                      MCP is the protocol AI agents already speak. Byzant is built on it from day one — not retrofitted. Every module is plug-and-play for any MCP-compatible agent.
                     </p>
                     <AnimatedPipeline active={openCard === 5} />
                   </div>
