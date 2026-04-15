@@ -1229,21 +1229,6 @@ export default function HomePage() {
               />
             </motion.div>
 
-            {/* Trust signals */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: heroVisible ? 1 : 0 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
-              className="hero-trust"
-              style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 20, flexWrap: "wrap" }}
-            >
-              {["MCP Protocol Native", "Human-in-the-loop", "Emotionless Execution"].map((t, i) => (
-                <span key={t} className="hero-tag" style={{ display: "flex", alignItems: "center", gap: i === 0 ? 0 : 16, fontFamily: MONO, fontSize: 10, color: "#99E1D9", letterSpacing: "0.06em" }}>
-                  {i > 0 && <span style={{ color: "#444444" }}>·</span>}
-                  {t}
-                </span>
-              ))}
-            </motion.div>
           </div>
 
           {/* RIGHT — Floating agent card */}
@@ -1274,11 +1259,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── STATS BAR ───────────────────────────────────────────── */}
-      <StatsBar />
-
       {/* ── MCP COMPATIBILITY BAR ───────────────────────────────── */}
       <MCPCompatibilityBar />
+
+      {/* ── STATS BAR ───────────────────────────────────────────── */}
+      <StatsBar />
 
       {/* ── BENTO GRID ──────────────────────────────────────────── */}
       <BentoGrid />
