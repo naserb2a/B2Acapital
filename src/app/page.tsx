@@ -493,7 +493,7 @@ function BentoGrid() {
           className="section-h2"
           style={{ textAlign: "left", fontSize: 48, fontWeight: 600, letterSpacing: "-0.03em", color: "#F5F5F5", fontFamily: SANS, margin: "0 0 64px", maxWidth: 640 }}
         >
-          Built for how agents actually trade.
+          Why traders choose Byzant.
         </motion.h2>
 
         {/* ── Row 1: 60/40 ── */}
