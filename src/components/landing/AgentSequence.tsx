@@ -116,18 +116,6 @@ export default function AgentSequence() {
 
         {/* Header */}
         <div className="seq-header" style={{ textAlign: "left", marginBottom: 64 }}>
-          {/* Eyebrow */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-            <div style={{ width: 24, height: 1, background: "#99E1D9" }} />
-            <span className="eyebrow-label" style={{
-              fontSize: 11, letterSpacing: "0.14em", color: "#99E1D9",
-              fontFamily: MONO, fontWeight: 600, textTransform: "uppercase",
-            }}>
-              HOW IT WORKS
-            </span>
-            <div style={{ width: 24, height: 1, background: "#99E1D9" }} />
-          </div>
-
           <motion.h2
             className="section-h2"
             initial={{ opacity: 0, y: 16 }}

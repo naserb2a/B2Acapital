@@ -472,20 +472,6 @@ function BentoGrid() {
   return (
     <section className="bento-section" style={{ background: "#0A0A0A", padding: "120px 0" }}>
       <div ref={ref} style={{ maxWidth: 1160, margin: "0 auto", padding: "0 2rem" }}>
-        {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}
-        >
-          <div style={{ width: 24, height: "0.5px", background: "#99E1D9" }} />
-          <span style={{ fontSize: 11, letterSpacing: "0.14em", color: "#99E1D9", fontFamily: MONO, fontWeight: 600 }}>
-            <span style={{ textTransform: "uppercase" }}>WHY </span>Byzant
-          </span>
-          <div style={{ width: 24, height: "0.5px", background: "#99E1D9" }} />
-        </motion.div>
-
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -712,13 +698,6 @@ function MarketplacePreview() {
         {/* Header row: eyebrow + title + subhead left, arrows right */}
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 48, flexWrap: "wrap", gap: 20 }}>
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <div style={{ width: 24, height: "0.5px", background: "#99E1D9" }} />
-              <span style={{ fontSize: 11, letterSpacing: "0.14em", color: "#99E1D9", fontFamily: MONO, fontWeight: 600, textTransform: "uppercase" }}>
-                THE MARKETPLACE
-              </span>
-              <div style={{ width: 24, height: "0.5px", background: "#99E1D9" }} />
-            </div>
             <motion.h2
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -1130,19 +1109,6 @@ export default function HomePage() {
         }}>
           {/* LEFT */}
           <div>
-            {/* Eyebrow */}
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: heroVisible ? 1 : 0 }}
-              transition={{ duration: 0.6 }}
-              style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}
-            >
-              <div style={{ width: 20, height: "0.5px", background: "#99E1D9" }} />
-              <span style={{ fontSize: 11, letterSpacing: "0.14em", color: "#99E1D9", fontFamily: MONO, fontWeight: 600, textTransform: "uppercase" }}>
-                Agentic Trading Infrastructure
-              </span>
-              <div style={{ width: 20, height: "0.5px", background: "#99E1D9" }} />
-            </motion.div>
-
             {/* H1 */}
             <motion.h1
               className="hero-h1"
@@ -1171,7 +1137,7 @@ export default function HomePage() {
               transition={{ duration: 0.7, delay: 0.5 }}
               style={{ fontSize: 18, color: "#666666", fontFamily: SANS, fontWeight: 300, lineHeight: 1.65, maxWidth: 560, margin: "0 0 20px" }}
             >
-              Byzant is the first marketplace built for AI trading agents — giving retail investors access to the same institutional-grade tools, data, and intelligence that hedge funds have always had.
+              Byzant is the first B2A (Business-to-Agent) marketplace — delivering institutional-grade trading infrastructure directly to AI agents, so retail investors finally have the edge hedge funds always had.
             </motion.p>
 
             {/* Agent compatibility badges */}
