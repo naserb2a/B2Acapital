@@ -666,6 +666,170 @@ function BentoGrid() {
   );
 }
 
+/* ─── MCP Compatibility Section ─────────────────────────────────── */
+const MCP_ITEMS = [
+  {
+    title: "OpenClaw",
+    desc: "The leading open-source autonomous trading agent. Byzant modules plug in natively via MCP.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Claude (Anthropic)",
+    desc: "The AI model powering most Byzant agents. Full MCP support out of the box.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+      </svg>
+    ),
+  },
+  {
+    title: "GPT-4 (OpenAI)",
+    desc: "Compatible via any MCP-enabled agent framework built on GPT-4.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0L4.1992 14.2a4.4992 4.4992 0 0 1-1.8584-6.3044zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7865a4.504 4.504 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Gemini (Google)",
+    desc: "Google's flagship model, fully compatible via MCP protocol.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 24A14.304 14.304 0 0 0 0 12 14.304 14.304 0 0 0 12 0a14.305 14.305 0 0 0 12 12 14.305 14.305 0 0 0-12 12"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Grok (xAI)",
+    desc: "xAI's reasoning model, connects to Byzant modules via MCP standard.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.629 5.905-5.629zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    ),
+  },
+  {
+    title: "LangChain",
+    desc: "The most widely used agent framework. Byzant modules work as native MCP tools.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+      </svg>
+    ),
+  },
+  {
+    title: "Cursor",
+    desc: "AI-powered dev environment with MCP support for agent-driven workflows.",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+      </svg>
+    ),
+  },
+];
+
+function MCPCompatibilitySection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section style={{
+      background: "#99E1D9",
+      position: "relative",
+      zIndex: 1,
+      isolation: "isolate",
+      padding: "120px 0",
+    }}>
+      <div ref={ref} style={{ maxWidth: 1160, margin: "0 auto", padding: "0 2rem" }}>
+        <div className="mcp-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "35fr 65fr",
+          gap: "80px",
+          alignItems: "start",
+        }}>
+
+          {/* LEFT — sticky title */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            style={{ position: "sticky", top: 100 }}
+          >
+            <h2 style={{
+              fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 700,
+              letterSpacing: "-0.03em", color: "#0a0f1a",
+              fontFamily: SANS, margin: "0 0 24px", lineHeight: 1.1,
+            }}>
+              Works with<br />your agent.
+            </h2>
+            <p style={{
+              fontSize: 16, color: "#1a2b3a", fontFamily: SANS,
+              fontWeight: 400, lineHeight: 1.65, margin: 0, maxWidth: 280,
+            }}>
+              Byzant connects to any MCP-compatible agent or framework. No custom integrations. No setup required.
+            </p>
+          </motion.div>
+
+          {/* RIGHT — item list */}
+          <div>
+            {/* Top divider */}
+            <div style={{ width: "100%", height: "1px", background: "rgba(10,15,26,0.15)" }} />
+
+            {MCP_ITEMS.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 + i * 0.1, ease: "easeOut" }}
+              >
+                <div style={{
+                  display: "flex", alignItems: "flex-start", gap: 20,
+                  padding: "24px 0",
+                }}>
+                  {/* Icon */}
+                  <div style={{
+                    width: 32, height: 32, borderRadius: 6, flexShrink: 0,
+                    background: "rgba(10,15,26,0.08)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    color: "#0a0f1a", marginTop: 2,
+                  }}>
+                    {item.icon}
+                  </div>
+
+                  {/* Text */}
+                  <div>
+                    <div style={{
+                      fontSize: 16, fontWeight: 600, color: "#0a0f1a",
+                      fontFamily: SANS, marginBottom: 4,
+                    }}>
+                      {item.title}
+                    </div>
+                    <div style={{
+                      fontSize: 14, color: "#1a2b3a", fontFamily: SANS,
+                      fontWeight: 400, lineHeight: 1.6,
+                    }}>
+                      {item.desc}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Row divider */}
+                <div style={{ width: "100%", height: "1px", background: "rgba(10,15,26,0.15)" }} />
+              </motion.div>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Marketplace Preview ───────────────────────────────────────── */
 const PREVIEW_MODULES = [
   { name: "Real-Time Market Data",  badge: "DATA",      desc: "Sub-millisecond quotes and level 2 order book direct to your agent.",            price: "$9/mo"  },
@@ -1051,6 +1215,9 @@ export default function HomePage() {
           .hero-grid { grid-template-columns: 1fr !important; }
           .agent-card-wrap { display: none !important; }
         }
+        @media (max-width: 860px) {
+          .mcp-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+        }
         @media (max-width: 768px) {
           /* Matrix background — fade out on mobile */
           .matrix-bg { opacity: 0.35 !important; }
@@ -1313,6 +1480,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── MCP COMPATIBILITY ───────────────────────────────────── */}
+      <MCPCompatibilitySection />
 
       {/* ── STATS BAR ───────────────────────────────────────────── */}
       <StatsBar />
