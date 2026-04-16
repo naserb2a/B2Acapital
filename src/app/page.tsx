@@ -136,10 +136,10 @@ function StatItem({ num, suffix, label, trigger }: { num: number; suffix: string
   const count = useCountUp(num, trigger);
   return (
     <div style={{ textAlign: "center", flex: 1 }}>
-      <div className="stat-num" style={{ fontSize: 36, fontWeight: 600, color: "#F5F5F5", fontFamily: MONO, letterSpacing: "-0.02em", lineHeight: 1 }}>
+      <div className="stat-num" style={{ fontSize: 36, fontWeight: 600, color: "#99E1D9", fontFamily: MONO, letterSpacing: "-0.02em", lineHeight: 1 }}>
         {count}{suffix}
       </div>
-      <div style={{ fontSize: 10, color: "#666666", fontFamily: MONO, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 8 }}>
+      <div style={{ fontSize: 10, color: "#99E1D9", fontFamily: MONO, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 8 }}>
         {label}
       </div>
     </div>
@@ -154,9 +154,9 @@ function StatsBar() {
       ref={ref}
       className={visible ? "sr sr-in" : "sr"}
       style={{
-        background: "#0F0F0F",
-        borderTop: "0.5px solid rgba(255,255,255,0.12)",
-        borderBottom: "0.5px solid rgba(255,255,255,0.12)",
+        background: "#0a0f1a",
+        borderTop: "0.5px solid rgba(153,225,217,0.15)",
+        borderBottom: "0.5px solid rgba(153,225,217,0.15)",
         padding: "28px 0",
         width: "100%",
       }}
@@ -169,7 +169,7 @@ function StatsBar() {
           <div key={s.label} style={{ display: "flex", flex: 1, alignItems: "center" }}>
             <StatItem {...s} trigger={inView} />
             {i < STATS.length - 1 && (
-              <div style={{ width: "0.5px", height: 40, background: "rgba(255,255,255,0.12)", flexShrink: 0 }} />
+              <div style={{ width: "0.5px", height: 40, background: "rgba(153,225,217,0.2)", flexShrink: 0 }} />
             )}
           </div>
         ))}
