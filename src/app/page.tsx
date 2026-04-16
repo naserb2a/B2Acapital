@@ -834,9 +834,14 @@ function CTASectionTeal({
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section style={{ background: "#99E1D9" }}>
+    <section style={{
+      background: "#99E1D9",
+      position: "relative",
+      zIndex: 1,
+      isolation: "isolate",
+    }}>
       {/* ── CTA content ── */}
-      <div ref={ref} style={{ maxWidth: 640, margin: "0 auto", padding: "120px 2rem 80px", textAlign: "center" }}>
+      <div ref={ref} style={{ maxWidth: 640, margin: "0 auto", padding: "140px 2rem 100px", textAlign: "center" }}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -951,7 +956,15 @@ function CTASectionTeal({
       </div>
 
       {/* ── Big Wordmark ── */}
-      <div style={{ textAlign: "center", lineHeight: 0.85, marginTop: 16 }}>
+      <div style={{
+        textAlign: "center",
+        lineHeight: 0.85,
+        marginTop: 24,
+        background: "#99E1D9",
+        paddingBottom: 80,
+        position: "relative",
+        zIndex: 2,
+      }}>
         <span style={{
           fontFamily: SANS,
           fontSize: "clamp(80px, 14vw, 160px)",
@@ -960,6 +973,8 @@ function CTASectionTeal({
           letterSpacing: "-0.04em",
           display: "block",
           userSelect: "none",
+          opacity: 1,
+          WebkitTextFillColor: "#0a0f1a",
         }}>
           Byzant
         </span>
@@ -986,14 +1001,16 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div style={{ background: "#0A0A0A", color: "#F5F5F5", minHeight: "100vh", fontFamily: SANS, overflowX: "hidden" }}>
+    <div style={{ background: "#0A0A0A", color: "#F5F5F5", minHeight: "100vh", fontFamily: SANS, overflowX: "hidden", position: "relative", zIndex: 0 }}>
       <style>{`
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overscroll-behavior: none; }
+        body { overscroll-behavior: none; }
         * { box-sizing: border-box; }
         @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
         .nav-link:hover { color: #F5F5F5 !important; }
         input::placeholder { color: #444444; }
         .cta-teal-input::placeholder { color: #6b7280; }
+        html, body { background: #99E1D9; }
 
         /* ── Scroll reveal ── */
         .sr { opacity: 0; transform: translateY(24px); }
