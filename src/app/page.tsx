@@ -839,27 +839,28 @@ function CTASectionTeal({
       position: "relative",
       zIndex: 1,
       isolation: "isolate",
+      marginTop: "-1px",
     }}>
       {/* ── CTA content ── */}
-      <div ref={ref} style={{ maxWidth: 640, margin: "0 auto", padding: "140px 2rem 100px", textAlign: "center" }}>
+      <div ref={ref} style={{ maxWidth: 640, margin: "0 auto", padding: "160px 2rem 60px", textAlign: "center" }}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
           style={{
-            fontSize: "clamp(32px, 5vw, 52px)", fontWeight: 700,
-            letterSpacing: "-0.04em", color: "#0a0f1a",
-            fontFamily: SANS, margin: "0 0 20px",
+            fontSize: "clamp(28px, 3vw, 38px)", fontWeight: 400,
+            letterSpacing: "-0.02em", color: "#0a0f1a",
+            fontFamily: SANS, margin: "0 0 28px", lineHeight: 1.35,
           }}
         >
-          Ready to give your agent an edge?
+          Delivering institutional-grade trading infrastructure directly to AI agents.
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.25 }}
-          style={{ fontSize: 16, color: "#1a2b3a", fontFamily: SANS, fontWeight: 300, margin: "0 0 40px", lineHeight: 1.6 }}
+          style={{ fontSize: 16, color: "#1a2b3a", fontFamily: SANS, fontWeight: 300, margin: "0 0 52px", lineHeight: 1.6 }}
         >
           Join the waitlist. Be first when we launch.<br />
           No spam. No commitments. Just early access.
@@ -928,9 +929,9 @@ function CTASectionTeal({
       </div>
 
       {/* ── Footer area ── */}
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 2rem 0" }}>
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "40px 2rem 0" }}>
         {/* Nav links row */}
-        <div style={{ display: "flex", justifyContent: "center", gap: 32, marginBottom: 28, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: 32, marginBottom: 36, flexWrap: "wrap" }}>
           {[
             { label: "Home", href: "/" },
             { label: "Marketplace", href: "#marketplace" },
@@ -947,7 +948,7 @@ function CTASectionTeal({
         </div>
 
         {/* Divider */}
-        <div style={{ width: "100%", height: "1px", background: "rgba(10,15,26,0.2)", marginBottom: 20 }} />
+        <div style={{ width: "100%", height: "1px", background: "rgba(10,15,26,0.2)", marginBottom: 28 }} />
 
         {/* Copyright */}
         <p style={{ textAlign: "center", fontSize: 12, color: "#0a0f1a", fontFamily: MONO, letterSpacing: "0.04em", margin: "0 0 0" }}>
@@ -959,9 +960,9 @@ function CTASectionTeal({
       <div style={{
         textAlign: "center",
         lineHeight: 0.85,
-        marginTop: 24,
+        marginTop: 48,
         background: "#99E1D9",
-        paddingBottom: 80,
+        paddingBottom: 100,
         position: "relative",
         zIndex: 2,
       }}>
