@@ -968,7 +968,7 @@ function CTASectionTeal({
       }}>
         <span style={{
           fontFamily: SANS,
-          fontSize: "clamp(80px, 14vw, 160px)",
+          fontSize: "clamp(60px, 9vw, 110px)",
           fontWeight: 700,
           color: "#0a0f1a",
           letterSpacing: "-0.04em",
@@ -1086,14 +1086,17 @@ export default function HomePage() {
         {/* Main nav row */}
         <div className="nav-inner" style={{
           height: 64, display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "0 48px",
+          padding: "0 48px", position: "relative",
         }}>
           <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "baseline", letterSpacing: 0 }}>
             <span style={{ color: "#99E1D9", fontWeight: 500, fontSize: 21, fontFamily: "var(--font-geist-sans)", letterSpacing: 0, WebkitTextStroke: "0.8px white" }}>Byzant</span>
           </Link>
 
-          {/* Desktop nav links */}
-          <div className="nav-desktop" style={{ display: "flex", gap: 36 }}>
+          {/* Desktop nav links — absolutely centered */}
+          <div className="nav-desktop" style={{
+            display: "flex", gap: 36,
+            position: "absolute", left: "50%", transform: "translateX(-50%)",
+          }}>
             {[
               { label: "Marketplace", href: "#marketplace" },
               { label: "How it Works", href: "#how-it-works" },
