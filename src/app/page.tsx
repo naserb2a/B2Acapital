@@ -157,7 +157,7 @@ function StatsBar() {
         background: "#0a0f1a",
         borderTop: "0.5px solid rgba(153,225,217,0.15)",
         borderBottom: "0.5px solid rgba(153,225,217,0.15)",
-        padding: "28px 0",
+        padding: "32px 0",
         width: "100%",
       }}
     >
@@ -470,7 +470,7 @@ function BentoGrid() {
   }
 
   return (
-    <section className="bento-section" style={{ background: "#0A0A0A", padding: "120px 0" }}>
+    <section className="bento-section" style={{ background: "#0A0A0A", padding: "140px 0" }}>
       <div ref={ref} style={{ maxWidth: 1160, margin: "0 auto", padding: "0 2rem" }}>
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -744,7 +744,7 @@ function MCPCompatibilitySection() {
       zIndex: 1,
       overflowX: "clip",
       width: "100%",
-      padding: "120px 0",
+      padding: "140px 0",
     }}>
       <div ref={ref} style={{ maxWidth: 1160, margin: "0 auto", padding: "0 2rem" }}>
         <div className="mcp-grid" style={{
@@ -857,7 +857,7 @@ function MarketplacePreview() {
   }
 
   return (
-    <section className="preview-section" style={{ background: "#0F0F0F", padding: "120px 0", overflow: "hidden" }}>
+    <section className="preview-section" style={{ background: "#0F0F0F", padding: "140px 0", overflow: "hidden" }}>
       <div ref={ref} style={{ maxWidth: 1160, margin: "0 auto", padding: "0 2rem" }}>
 
         {/* Header row: eyebrow + title + subhead left, arrows right */}
@@ -1380,7 +1380,7 @@ export default function HomePage() {
         <div className="hero-grid" style={{
           position: "relative", zIndex: 1,
           maxWidth: 1200, margin: "0 auto",
-          padding: "160px 48px 80px",
+          padding: "220px 48px 180px",
           display: "grid", gridTemplateColumns: "1fr 1fr",
           gap: 80, alignItems: "center", width: "100%",
         }}>

@@ -101,7 +101,7 @@ export default function AgentSequence() {
       className="seq-section"
       style={{
         background: "#0A0A0A",
-        padding: "80px 0",
+        padding: "140px 0",
         width: "100%",
       }}
     >
