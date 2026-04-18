@@ -775,27 +775,7 @@ const MCP_ITEMS = [
     title: "OpenClaw",
     desc: "The leading open-source autonomous trading agent. Byzant modules plug in natively via MCP.",
     icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Antennae */}
-        <path d="M12 6 L10.5 2" stroke="#E63946" strokeWidth="1.4" strokeLinecap="round" />
-        <path d="M20 6 L21.5 2" stroke="#E63946" strokeWidth="1.4" strokeLinecap="round" />
-        <circle cx="10.5" cy="2" r="1" fill="#E63946" />
-        <circle cx="21.5" cy="2" r="1" fill="#E63946" />
-        {/* Body */}
-        <circle cx="16" cy="16" r="9" fill="#E63946" />
-        {/* Arms */}
-        <path d="M7.5 16 L4 14" stroke="#E63946" strokeWidth="1.6" strokeLinecap="round" />
-        <path d="M24.5 16 L28 14" stroke="#E63946" strokeWidth="1.6" strokeLinecap="round" />
-        {/* Legs */}
-        <path d="M12 24.5 L11 28" stroke="#E63946" strokeWidth="1.6" strokeLinecap="round" />
-        <path d="M20 24.5 L21 28" stroke="#E63946" strokeWidth="1.6" strokeLinecap="round" />
-        {/* Eyes */}
-        <circle cx="13" cy="15" r="2.2" fill="#0a0f1a" />
-        <circle cx="19" cy="15" r="2.2" fill="#0a0f1a" />
-        {/* Pupils */}
-        <circle cx="13" cy="15" r="0.9" fill="#99E1D9" />
-        <circle cx="19" cy="15" r="0.9" fill="#99E1D9" />
-      </svg>
+      <span style={{ fontSize: "24px", filter: "grayscale(1) brightness(0)" }}>🦞</span>
     ),
   },
   {
