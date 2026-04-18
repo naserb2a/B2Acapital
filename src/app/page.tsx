@@ -784,8 +784,10 @@ const MCP_ITEMS = [
     title: "Claude (Anthropic)",
     desc: "The AI model powering most Byzant agents. Full MCP support out of the box.",
     icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#0a0f1a">
+        <path d="M12 1 L13.4 12 L12 23 L10.6 12 Z" />
+        <path d="M12 1 L13.4 12 L12 23 L10.6 12 Z" transform="rotate(60 12 12)" />
+        <path d="M12 1 L13.4 12 L12 23 L10.6 12 Z" transform="rotate(120 12 12)" />
       </svg>
     ),
   },
