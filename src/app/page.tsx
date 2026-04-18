@@ -829,10 +829,12 @@ const MCP_ITEMS = [
   },
   {
     title: "Cursor",
-    desc: "AI-powered dev environment with MCP support for agent-driven workflows.",
+    desc: "AI-powered IDE. Byzant modules surface trading context directly in your dev environment.",
     icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+      <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,2 95,26 95,74 50,98 5,74 5,26" fill="#1a1a1a"/>
+        <polygon points="50,15 85,70 50,55" fill="white"/>
+        <polygon points="50,55 50,85 25,70" fill="white"/>
       </svg>
     ),
   },
