@@ -778,9 +778,8 @@ const MCP_ITEMS = [
       <img
         src="/icons/openclaw.png"
         alt="OpenClaw"
-        width="20"
-        height="20"
-        style={{ filter: "brightness(0) saturate(100%)" }}
+        width="24"
+        height="24"
       />
     ),
   },
