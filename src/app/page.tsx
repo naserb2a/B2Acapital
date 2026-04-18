@@ -326,29 +326,120 @@ function ApprovalMockup() {
   );
 }
 
-function WhaleIcon({ active }: { active: boolean }) {
+function OptionsFlowHeatmap({ active }: { active: boolean }) {
+  const COLS = 8;
+  const ROWS = 6;
+  const CELL = 28;
+  const GAP = 4;
+  const PAD = 12;
+  const GRID_W = COLS * CELL + (COLS - 1) * GAP;
+  const HOT = [10, 18, 27, 34, 43];
+
+  const [flashCell, setFlashCell] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!active) { setFlashCell(null); return; }
+    const pick = () => {
+      const hotIdx = HOT[Math.floor(Math.random() * HOT.length)];
+      setFlashCell(hotIdx);
+    };
+    pick();
+    const id = setInterval(() => pick(), 2400);
+    return () => clearInterval(id);
+  }, [active]);
+
+  const baseOpacity = (i: number) => {
+    const row = Math.floor(i / COLS);
+    const col = i % COLS;
+    const seed = ((col * 0.37 + row * 0.61 + col * row * 0.07) * 7.3) % 1;
+    return 0.08 + seed * 0.42;
+  };
+  const pulseDelay = (i: number) => ((i * 0.11) % 2.4);
+
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "24px 0 8px" }}>
-      <motion.svg
-        width="120" height="120" viewBox="0 0 140 110" fill="none"
-        initial={{ opacity: 0, scale: 0.85 }}
-        animate={active ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        <path
-          d="M 22 55 C 22 30, 55 22, 85 26 C 105 29, 118 40, 115 55 C 118 70, 105 81, 85 84 C 55 88, 22 80, 22 55 Z"
-          stroke="#99E1D9" strokeWidth={1.8} fill="none" strokeLinejoin="round"
-        />
-        <path
-          d="M 115 46 L 132 32 L 135 44 L 128 55 L 135 66 L 132 78 L 115 64"
-          stroke="#99E1D9" strokeWidth={1.8} fill="none" strokeLinejoin="round" strokeLinecap="round"
-        />
-        <circle cx={40} cy={48} r={2} fill="#99E1D9" />
-        <path d="M 60 78 Q 66 85 74 80" stroke="#99E1D9" strokeWidth={1.5} fill="none" strokeLinecap="round" />
-        <path d="M 24 62 Q 32 66 40 62" stroke="#99E1D9" strokeWidth={1.2} fill="none" strokeLinecap="round" opacity={0.7} />
-        <path d="M 60 22 C 58 14 62 10 60 4 M 68 22 L 68 6 M 76 22 C 78 14 74 10 76 4"
-          stroke="#99E1D9" strokeWidth={1.2} fill="none" strokeLinecap="round" opacity={0.6} />
-      </motion.svg>
+    <div style={{ padding: "24px 0 8px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div style={{
+        position: "relative",
+        padding: PAD,
+        background: "#0d1420",
+        borderRadius: 10,
+        border: "0.5px solid rgba(153,225,217,0.1)",
+      }}>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(${COLS}, ${CELL}px)`,
+          gridAutoRows: `${CELL}px`,
+          gap: GAP,
+        }}>
+          {Array.from({ length: COLS * ROWS }, (_, i) => {
+            const base = baseOpacity(i);
+            const isHot = HOT.includes(i);
+            const isFlash = flashCell === i;
+            const peak = isHot ? 0.9 : Math.min(0.6, base * 1.9);
+            return (
+              <motion.div
+                key={i}
+                animate={active ? {
+                  opacity: [base, peak, base],
+                  scale: isFlash ? [1, 1.1, 1] : 1,
+                } : { opacity: 0, scale: 1 }}
+                transition={{
+                  opacity: {
+                    duration: isHot ? 1.8 : 2.4,
+                    delay: pulseDelay(i),
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                  scale: { duration: 0.5, ease: "easeOut" },
+                }}
+                style={{
+                  width: CELL, height: CELL, borderRadius: 4,
+                  background: "#99E1D9",
+                  boxShadow: isHot ? "0 0 10px rgba(153,225,217,0.45)" : "none",
+                }}
+              />
+            );
+          })}
+        </div>
+
+        <AnimatePresence>
+          {flashCell !== null && active && (
+            <motion.div
+              key={flashCell}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: [0, 1, 1, 0], y: 0 }}
+              transition={{ duration: 2.2, times: [0, 0.15, 0.85, 1], ease: "easeInOut" }}
+              style={{
+                position: "absolute",
+                top: -8,
+                left: PAD + (flashCell % COLS) * (CELL + GAP) + CELL / 2,
+                transform: "translate(-50%, -100%)",
+                fontFamily: MONO, fontSize: 8,
+                color: "#4d9fff",
+                letterSpacing: "0.12em",
+                whiteSpace: "nowrap",
+                pointerEvents: "none",
+                background: "#0d1420",
+                padding: "3px 8px",
+                borderRadius: 4,
+                border: "0.5px solid rgba(77,159,255,0.3)",
+              }}
+            >
+              UNUSUAL ACTIVITY DETECTED
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <div style={{
+        display: "flex", justifyContent: "space-between",
+        width: GRID_W + PAD * 2, marginTop: 12,
+        fontFamily: MONO, fontSize: 9,
+        color: "#4d9fff", letterSpacing: "0.14em",
+      }}>
+        <span>STRIKE SCAN</span>
+        <span>LIVE FLOW</span>
+      </div>
     </div>
   );
 }
@@ -599,7 +690,7 @@ function BentoGrid() {
                     <p style={expandedTextStyle}>
                       Whale tracking, congressional trade monitoring, dark pool signals, options flow — tools hedge funds pay six figures for, now modular and agent-ready.
                     </p>
-                    <WhaleIcon active={openCard === 3} />
+                    <OptionsFlowHeatmap active={openCard === 3} />
                   </div>
                 </BentoExpanded>
               )}
