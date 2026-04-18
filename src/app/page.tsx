@@ -906,7 +906,7 @@ function MCPCompatibilitySection() {
                   {/* Icon */}
                   <div style={{
                     width: 32, height: 32, borderRadius: 6, flexShrink: 0,
-                    background: "rgba(10,15,26,0.08)",
+                    background: "transparent",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     color: "#0a0f1a", marginTop: 2,
                   }}>
