@@ -218,7 +218,7 @@ export default function AgentSequence() {
               fontFamily: SANS, margin: 0, maxWidth: 560, lineHeight: 1.5,
             }}
           >
-            Four steps. Zero emotion. Every trade ends in the arbiter's hands.
+            Four steps. Zero emotion. Every trade ends in the arbiter&apos;s hands.
           </motion.p>
         </div>
 

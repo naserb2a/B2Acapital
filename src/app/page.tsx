@@ -346,6 +346,7 @@ function OptionsFlowHeatmap({ active }: { active: boolean }) {
     pick();
     const id = setInterval(() => pick(), 2400);
     return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
   const baseOpacity = (i: number) => {
