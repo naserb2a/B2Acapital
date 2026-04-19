@@ -32,7 +32,7 @@ function StepCard({
       style={{
         flex: 1,
         background: "#0d1420",
-        border: "1px solid rgba(255,255,255,0.08)",
+        border: "1px solid rgba(255,255,255,0.06)",
         borderRadius: 4,
         padding: 28,
         display: "flex",
