@@ -31,8 +31,8 @@ function StepCard({
       whileHover={{ borderColor: "rgba(255,255,255,0.18)" }}
       style={{
         flex: 1,
-        background: "#0d1420",
-        border: "1px solid rgba(255,255,255,0.06)",
+        background: "#111318",
+        border: "1px solid rgba(255,255,255,0.07)",
         borderRadius: 4,
         padding: 28,
         display: "flex",
