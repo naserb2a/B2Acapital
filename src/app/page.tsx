@@ -52,14 +52,14 @@ function WaitlistForm({
       <div style={{
         display: "inline-flex", alignItems: "center", gap: 10,
         padding: "14px 24px",
-        background: "rgba(61,214,140,0.08)",
-        border: "0.5px solid rgba(61,214,140,0.3)",
+        background: "rgba(153,225,217,0.08)",
+        border: "0.5px solid rgba(153,225,217,0.3)",
         borderRadius: 14, fontSize: 14,
-        color: "#3dd68c", fontFamily: SANS,
+        color: "#99E1D9", fontFamily: SANS,
       }}>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <circle cx="7" cy="7" r="6.5" stroke="#3dd68c" strokeWidth="1" />
-          <path d="M4.5 7l1.8 1.8L9.5 4.5" stroke="#3dd68c" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="7" cy="7" r="6.5" stroke="#99E1D9" strokeWidth="1" />
+          <path d="M4.5 7l1.8 1.8L9.5 4.5" stroke="#99E1D9" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         You&apos;re on the list. We&apos;ll be in touch.
       </div>
