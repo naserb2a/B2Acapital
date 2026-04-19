@@ -1,168 +1,49 @@
 "use client";
 import { useRef } from "react";
-import { motion, useInView, type TargetAndTransition, type Transition } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const MONO = "var(--font-geist-mono)";
 const SANS = "var(--font-geist-sans)";
 
-type DataRow = { label: string; value: string; positive?: boolean };
-
-function StepCard({
-  step, tag, title, subtitle, rows,
-  statusDot, statusText,
-  initial, animate, transition,
-}: {
+type Item = {
   step: string;
-  tag: string;
+  label: string;
   title: string;
-  subtitle: string;
-  rows: DataRow[];
-  statusDot: string;
-  statusText: string;
-  initial: TargetAndTransition;
-  animate: TargetAndTransition;
-  transition: Transition;
-}) {
-  return (
-    <motion.div
-      initial={initial}
-      animate={animate}
-      transition={transition}
-      whileHover={{ borderColor: "rgba(255,255,255,0.18)" }}
-      style={{
-        flex: 1,
-        background: "#111318",
-        border: "1px solid rgba(255,255,255,0.07)",
-        borderRadius: 4,
-        padding: 28,
-        display: "flex",
-        flexDirection: "column",
-        minHeight: 300,
-        transition: "border-color 0.25s",
-      }}
-    >
-      {/* Header: step + tag */}
-      <div style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-      }}>
-        <span style={{
-          fontFamily: MONO, fontSize: 11, color: "#64748b",
-          letterSpacing: "0.1em", fontVariantNumeric: "tabular-nums",
-        }}>
-          {step}
-        </span>
-        <span style={{
-          fontFamily: MONO, fontSize: 10, color: "#64748b",
-          letterSpacing: "0.06em",
-        }}>
-          {tag}
-        </span>
-      </div>
+  body: string;
+  active?: boolean;
+};
 
-      {/* Title */}
-      <div style={{
-        marginTop: 20,
-        fontFamily: SANS, fontSize: 18, fontWeight: 600,
-        color: "#F5F5F5", letterSpacing: "-0.015em",
-        lineHeight: 1.3,
-      }}>
-        {title}
-      </div>
-
-      {/* Subtitle */}
-      <div style={{
-        marginTop: 6,
-        fontFamily: SANS, fontSize: 13, color: "#94a3b8",
-        lineHeight: 1.5,
-      }}>
-        {subtitle}
-      </div>
-
-      {/* Divider */}
-      <div style={{
-        height: 1, background: "rgba(255,255,255,0.06)",
-        margin: "20px 0",
-      }} />
-
-      {/* Data rows */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-        {rows.map((r) => (
-          <div key={r.label} style={{
-            display: "flex", alignItems: "baseline", justifyContent: "space-between",
-            fontFamily: MONO, fontSize: 11.5,
-          }}>
-            <span style={{ color: "#64748b", letterSpacing: "0.02em" }}>
-              {r.label}
-            </span>
-            <span style={{
-              color: r.positive ? "#99E1D9" : "#F5F5F5",
-              letterSpacing: "0.02em",
-              fontVariantNumeric: "tabular-nums",
-            }}>
-              {r.value}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {/* Status line */}
-      <div style={{
-        marginTop: 20,
-        display: "flex", alignItems: "center", gap: 8,
-      }}>
-        <span style={{
-          width: 6, height: 6, borderRadius: "50%",
-          background: statusDot, flexShrink: 0,
-        }} />
-        <span style={{
-          fontFamily: MONO, fontSize: 11, color: "#94a3b8",
-          letterSpacing: "0.02em",
-        }}>
-          {statusText}
-        </span>
-      </div>
-    </motion.div>
-  );
-}
-
-function Connector({ delay }: { delay: number }) {
-  return (
-    <div
-      className="agent-seq-connector"
-      style={{
-        width: 40, flexShrink: 0,
-        position: "relative",
-        display: "flex", alignItems: "center", justifyContent: "center",
-      }}
-    >
-      <div style={{
-        width: "100%",
-        borderTop: "1px dashed rgba(255,255,255,0.12)",
-      }} />
-      <span
-        className="seq-pulse"
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: 0,
-          width: 4, height: 4,
-          borderRadius: "50%",
-          background: "#99E1D9",
-          transform: "translate(-50%, -50%)",
-          animationDelay: `${delay}s`,
-        }}
-      />
-    </div>
-  );
-}
+const ITEMS: Item[] = [
+  {
+    step: "01",
+    label: "MCP Protocol",
+    title: "Agent · Byzant linked",
+    body: "Your agent speaks Byzant natively via MCP. Zero configuration, millisecond handshake.",
+    active: true,
+  },
+  {
+    step: "02",
+    label: "Signal",
+    title: "NVDA · Bullish +0.82",
+    body: "Sentiment, flow, and pattern inputs aggregate into a single conviction score.",
+  },
+  {
+    step: "03",
+    label: "Approval",
+    title: "Awaiting your decision",
+    body: "Every trade surfaces a concise brief. Size, risk, horizon. You hold the final click.",
+  },
+  {
+    step: "04",
+    label: "Execution",
+    title: "+2.34% · Filled at $118.40",
+    body: "Order routed through your broker. P&L and slippage logged automatically.",
+  },
+];
 
 export default function AgentSequence() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
-
-  const fade: TargetAndTransition = { opacity: 0, y: 24 };
-  const reveal: TargetAndTransition = inView ? { opacity: 1, y: 0 } : {};
-  const tr = (d: number): Transition => ({ duration: 0.6, delay: d, ease: "easeOut" });
 
   return (
     <section
@@ -176,24 +57,17 @@ export default function AgentSequence() {
       }}
     >
       <style>{`
-        @keyframes seq-flow {
-          0%   { left: 0%;   opacity: 0; }
-          10%  { opacity: 1; }
-          90%  { opacity: 1; }
-          100% { left: 100%; opacity: 0; }
-        }
-        .seq-pulse { animation: seq-flow 3s linear infinite; }
-        @media (max-width: 900px) {
-          .agent-seq-row { flex-direction: column !important; gap: 14px !important; }
-          .agent-seq-connector { display: none !important; }
-          .agent-seq-row > * { width: 100% !important; flex: none !important; }
+        @media (max-width: 820px) {
+          .seq-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .seq-line { display: none !important; }
+          .seq-item-dot-wrap { padding-top: 0 !important; }
         }
       `}</style>
 
       <div style={{ maxWidth: 1160, margin: "0 auto", padding: "0 2rem" }}>
 
         {/* Header */}
-        <div style={{ marginBottom: 80 }}>
+        <div style={{ marginBottom: 96 }}>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -219,70 +93,81 @@ export default function AgentSequence() {
           </motion.p>
         </div>
 
-        {/* Row */}
-        <div className="agent-seq-row" style={{ display: "flex", alignItems: "stretch", gap: 0 }}>
-          <StepCard
-            step="01"
-            tag="MCP Protocol"
-            title="Agent · Byzant linked"
-            subtitle="Native MCP handshake with zero configuration and millisecond discovery."
-            rows={[
-              { label: "Protocol",  value: "MCP 1.2" },
-              { label: "Latency",   value: "12ms", positive: true },
-              { label: "Handshake", value: "Verified", positive: true },
-            ]}
-            statusDot="#99E1D9"
-            statusText="Zero config · already speaking"
-            initial={fade} animate={reveal} transition={tr(0)}
+        {/* Timeline */}
+        <div style={{ position: "relative" }}>
+          {/* Horizontal line */}
+          <div
+            className="seq-line"
+            style={{
+              position: "absolute",
+              top: 4,
+              left: 0,
+              right: 0,
+              height: 1,
+              background: "rgba(255,255,255,0.08)",
+            }}
           />
-          <Connector delay={0} />
 
-          <StepCard
-            step="02"
-            tag="Alpha-1"
-            title="NVDA · bullish"
-            subtitle="Signal confirmed by sentiment and flow. Conviction score logged against the ticker."
-            rows={[
-              { label: "Signal",     value: "+0.82", positive: true },
-              { label: "Confidence", value: "82%",   positive: true },
-              { label: "Horizon",    value: "1–3 days" },
-            ]}
-            statusDot="#99E1D9"
-            statusText="Signal confirmed"
-            initial={fade} animate={reveal} transition={tr(0.15)}
-          />
-          <Connector delay={1} />
+          {/* Items */}
+          <div
+            className="seq-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: 40,
+              position: "relative",
+            }}
+          >
+            {ITEMS.map((it, i) => (
+              <motion.div
+                key={it.step}
+                initial={{ opacity: 0, y: 16 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.3 + i * 0.12, ease: "easeOut" }}
+              >
+                {/* Dot */}
+                <div className="seq-item-dot-wrap" style={{ paddingTop: 0, marginBottom: 28, display: "flex", alignItems: "center", height: 8 }}>
+                  <span
+                    style={{
+                      width: it.active ? 8 : 6,
+                      height: it.active ? 8 : 6,
+                      borderRadius: "50%",
+                      background: it.active ? "#99E1D9" : "rgba(255,255,255,0.2)",
+                      display: "inline-block",
+                    }}
+                  />
+                </div>
 
-          <StepCard
-            step="03"
-            tag="Pending"
-            title="50sh long · $5,920"
-            subtitle="Trade brief surfaced for your review. Entry, stop, and risk are pre-modeled."
-            rows={[
-              { label: "Risk", value: "1.8% NAV" },
-              { label: "R:R",  value: "2.6 : 1", positive: true },
-              { label: "TTL",  value: "00:45" },
-            ]}
-            statusDot="#f0b429"
-            statusText="Awaiting your approval"
-            initial={fade} animate={reveal} transition={tr(0.3)}
-          />
-          <Connector delay={2} />
+                {/* Step + label */}
+                <div style={{
+                  fontFamily: MONO, fontSize: 11,
+                  color: "rgba(255,255,255,0.25)",
+                  letterSpacing: "0.08em",
+                  marginBottom: 14,
+                  fontVariantNumeric: "tabular-nums",
+                }}>
+                  {it.step}  ·  {it.label}
+                </div>
 
-          <StepCard
-            step="04"
-            tag="Filled"
-            title="+2.34% · filled at $118.40"
-            subtitle="Order routed through your broker. Slippage, P&amp;L, and timestamps written to the log."
-            rows={[
-              { label: "P&L",          value: "+$138.52", positive: true },
-              { label: "Slippage",     value: "$0.01" },
-              { label: "Fill quality", value: "99.8%", positive: true },
-            ]}
-            statusDot="#99E1D9"
-            statusText="Position opened"
-            initial={fade} animate={reveal} transition={tr(0.45)}
-          />
+                {/* Title */}
+                <div style={{
+                  fontFamily: SANS, fontSize: 17, fontWeight: 500,
+                  color: "#eef2ff", letterSpacing: "-0.01em",
+                  lineHeight: 1.3, marginBottom: 10,
+                }}>
+                  {it.title}
+                </div>
+
+                {/* Body */}
+                <div style={{
+                  fontFamily: SANS, fontSize: 13,
+                  color: "#64748b", lineHeight: 1.6,
+                }}>
+                  {it.body}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
