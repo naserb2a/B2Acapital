@@ -190,7 +190,7 @@ export default function AgentSequence() {
         }
       `}</style>
 
-      <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 2rem" }}>
+      <div style={{ maxWidth: 1160, margin: "0 auto", padding: "0 2rem" }}>
 
         {/* Header */}
         <div className="seq-header" style={{ textAlign: "left", marginBottom: 80 }}>
