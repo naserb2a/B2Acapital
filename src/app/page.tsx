@@ -6,11 +6,6 @@ import dynamic from "next/dynamic";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import AgentSequence from "@/components/landing/AgentSequence";
 
-const AnimatedAgentCard = dynamic(
-  () => import("@/components/landing/AnimatedAgentCard"),
-  { ssr: false }
-);
-
 const MatrixBackground = dynamic(
   () => import("@/components/landing/MatrixBackground"),
   { ssr: false }
@@ -1496,91 +1491,90 @@ export default function HomePage() {
       </nav>
 
       {/* ── HERO ────────────────────────────────────────────────── */}
-      <section style={{ position: "relative", display: "flex", overflow: "hidden", background: "transparent", zIndex: 2 }}>
+      <section style={{ position: "relative", overflow: "hidden", background: "transparent", zIndex: 2, width: "100%" }}>
         {/* Glow */}
-        <div style={{ position: "absolute", top: "10%", left: "5%", width: "60%", height: "70%", background: "radial-gradient(ellipse at center, rgba(153,225,217,0.06) 0%, transparent 65%)", pointerEvents: "none", zIndex: 0 }} />
+        <div style={{ position: "absolute", top: "10%", left: "-5%", width: "70%", height: "80%", background: "radial-gradient(ellipse at center, rgba(153,225,217,0.06) 0%, transparent 65%)", pointerEvents: "none", zIndex: 0 }} />
 
-        <div className="hero-grid" style={{
+        <div style={{
           position: "relative", zIndex: 1,
-          maxWidth: 1200, margin: "0 auto",
-          padding: "220px 48px 180px",
-          display: "grid", gridTemplateColumns: "1fr 1fr",
-          gap: 80, alignItems: "center", width: "100%",
+          maxWidth: 1160, margin: "0 auto",
+          padding: "240px 2rem 200px",
+          width: "100%",
         }}>
-          {/* LEFT */}
-          <div>
-            {/* H1 */}
-            <motion.h1
-              className="hero-h1"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 30 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-              style={{ fontSize: 61, fontWeight: 300, fontStyle: "normal", letterSpacing: "-0.04em", lineHeight: 1.15, margin: "0 0 20px", color: "#94a3b8", fontFamily: SANS }}
-            >
-              Analysis without emotion.
-            </motion.h1>
-            <motion.h2
-              className="hero-h2"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 30 }}
-              transition={{ duration: 0.7, delay: 0.28, ease: "easeOut" }}
-              style={{ fontSize: 61, fontWeight: 700, fontStyle: "normal", letterSpacing: "-0.04em", lineHeight: 1.15, margin: "0 0 32px", color: "#F5F5F5", fontFamily: SANS }}
-            >
-              You are the arbiter.
-            </motion.h2>
+          {/* Eyebrow */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 16 }}
+            transition={{ duration: 0.7, delay: 0, ease: "easeOut" }}
+            style={{
+              fontFamily: MONO, fontSize: 11,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "#99E1D9", marginBottom: 40,
+            }}
+          >
+            Agentic Trading Infrastructure
+          </motion.div>
 
-            {/* Body */}
-            <motion.p
-              className="hero-body"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 16 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-              style={{ fontSize: 18, color: "#666666", fontFamily: SANS, fontWeight: 300, lineHeight: 1.65, maxWidth: 560, margin: "0 0 20px" }}
-            >
-              Byzant is the first B2A (Business-to-Agent) marketplace — delivering institutional-grade trading infrastructure directly to AI agents, so retail investors finally have the edge hedge funds always had.
-            </motion.p>
+          {/* Headline — line 1 */}
+          <motion.h1
+            className="hero-h1"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 30 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+            style={{
+              fontSize: "clamp(3rem, 6vw, 5.5rem)",
+              fontWeight: 700, letterSpacing: "-0.04em",
+              lineHeight: 1.05, margin: "0",
+              color: "#64748b", fontFamily: SANS,
+            }}
+          >
+            Analysis without emotion.
+          </motion.h1>
 
-            {/* Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 12 }}
-              transition={{ duration: 0.6, delay: 0.75 }}
-            >
-              <WaitlistForm
-                submitted={submitted1}
-                onSubmit={(e) => { e.preventDefault(); if (email1) setSubmitted1(true); }}
-                email={email1}
-                setEmail={setEmail1}
-              />
-            </motion.div>
+          {/* Headline — line 2 */}
+          <motion.h2
+            className="hero-h2"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 30 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            style={{
+              fontSize: "clamp(3rem, 6vw, 5.5rem)",
+              fontWeight: 700, letterSpacing: "-0.04em",
+              lineHeight: 1.05, margin: "0 0 56px",
+              color: "#eef2ff", fontFamily: SANS,
+            }}
+          >
+            You are the arbiter.
+          </motion.h2>
 
-          </div>
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 16 }}
+            transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+            style={{
+              fontSize: 16, color: "#64748b",
+              fontFamily: SANS, fontWeight: 400,
+              lineHeight: 1.65, maxWidth: 520,
+              margin: "0 0 40px",
+            }}
+          >
+            Byzant is the first B2A marketplace — delivering institutional-grade trading infrastructure directly to AI agents, so retail investors finally have the edge hedge funds always had.
+          </motion.p>
 
-          {/* RIGHT — Floating agent card */}
-          <div className="agent-card-wrap" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={heroVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-              transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-              style={{ position: "relative" }}
-            >
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
-              style={{ position: "relative" }}
-            >
-              {/* Glow behind card */}
-              <div style={{
-                position: "absolute", inset: "-40px",
-                background: "radial-gradient(ellipse at center, rgba(153,225,217,0.12) 0%, transparent 70%)",
-                borderRadius: 60, pointerEvents: "none",
-              }} />
-              <div style={{ position: "relative" }}>
-                <AnimatedAgentCard />
-              </div>
-            </motion.div>
-            </motion.div>
-          </div>
+          {/* Waitlist form */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: heroVisible ? 1 : 0, y: heroVisible ? 0 : 12 }}
+            transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+          >
+            <WaitlistForm
+              submitted={submitted1}
+              onSubmit={(e) => { e.preventDefault(); if (email1) setSubmitted1(true); }}
+              email={email1}
+              setEmail={setEmail1}
+            />
+          </motion.div>
         </div>
       </section>
 
