@@ -439,7 +439,7 @@ export default function OnboardingPage() {
                 <StepHeader
                   eyebrow="Step 2 of 4"
                   title="Connect your broker."
-                  subtitle="Byzant connects to your brokerage to surface trade opportunities for your approval."
+                  subtitle="Your agent connects to your brokerage via MCP. Byzant modules plug in automatically — no setup required."
                 />
 
                 <div style={{ display: "flex", justifyContent: "center" }}>
