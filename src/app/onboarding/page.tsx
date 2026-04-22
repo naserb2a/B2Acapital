@@ -18,9 +18,6 @@ const INK_MUTED = "#64748b";
 const SURFACE = "#111318";
 
 type AgentType = "claude" | "gpt-4" | "gemini" | "grok" | "openclaw" | "other";
-type AccountSize = "under_10k" | "10_50k" | "50_100k" | "100k_plus";
-type RiskTolerance = "conservative" | "moderate" | "aggressive";
-type Experience = "beginner" | "intermediate" | "advanced";
 
 const DISCLAIMER = `DISCLAIMER — NOT FINANCIAL ADVICE
 
@@ -77,25 +74,6 @@ const AGENT_OPTIONS: {
   },
 ];
 
-const ACCOUNT_SIZES: { key: AccountSize; label: string }[] = [
-  { key: "under_10k", label: "Under $10k" },
-  { key: "10_50k", label: "$10k–$50k" },
-  { key: "50_100k", label: "$50k–$100k" },
-  { key: "100k_plus", label: "$100k+" },
-];
-
-const RISK_LEVELS: { key: RiskTolerance; label: string }[] = [
-  { key: "conservative", label: "Conservative" },
-  { key: "moderate", label: "Moderate" },
-  { key: "aggressive", label: "Aggressive" },
-];
-
-const EXPERIENCE_LEVELS: { key: Experience; label: string }[] = [
-  { key: "beginner", label: "Beginner" },
-  { key: "intermediate", label: "Intermediate" },
-  { key: "advanced", label: "Advanced" },
-];
-
 function Wordmark() {
   return (
     <Link
@@ -123,7 +101,7 @@ function ProgressDots({ step }: { step: number }) {
         alignItems: "center",
       }}
     >
-      {[0, 1, 2, 3].map((i) => {
+      {[0, 1, 2].map((i) => {
         const active = i === step;
         const done = i < step;
         return (
@@ -196,51 +174,6 @@ function stepVariants() {
   };
 }
 
-function SegmentedGroup<T extends string>({
-  options,
-  value,
-  onChange,
-}: {
-  options: { key: T; label: string }[];
-  value: T | null;
-  onChange: (v: T) => void;
-}) {
-  return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-      {options.map((opt) => {
-        const active = opt.key === value;
-        return (
-          <button
-            key={opt.key}
-            type="button"
-            onClick={() => onChange(opt.key)}
-            style={{
-              padding: "10px 16px",
-              borderRadius: 999,
-              border: "1px solid " + (active ? TEAL : BORDER),
-              background: active ? TEAL_DIM : "transparent",
-              color: active ? TEAL : INK,
-              fontFamily: SORA,
-              fontSize: 13,
-              fontWeight: active ? 600 : 400,
-              cursor: "pointer",
-              transition: "background 0.15s, color 0.15s, border-color 0.15s",
-            }}
-            onMouseEnter={(e) => {
-              if (!active) e.currentTarget.style.borderColor = BORDER_HI;
-            }}
-            onMouseLeave={(e) => {
-              if (!active) e.currentTarget.style.borderColor = BORDER;
-            }}
-          >
-            {opt.label}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
 export default function OnboardingPage() {
   const router = useRouter();
   const [step, setStep] = useState(0);
@@ -254,18 +187,11 @@ export default function OnboardingPage() {
   // Step 2
   const [agent, setAgent] = useState<AgentType | null>(null);
 
-  // Step 3
-  const [accountSize, setAccountSize] = useState<AccountSize | null>(null);
-  const [riskTolerance, setRiskTolerance] = useState<RiskTolerance | null>(null);
-  const [experience, setExperience] = useState<Experience | null>(null);
-
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const canContinueStep0 = agreed;
-  const canContinueStep2 = agent !== null;
-  const canFinish =
-    accountSize !== null && riskTolerance !== null && experience !== null;
+  const canFinish = agent !== null;
 
   async function handleFinish() {
     setSubmitting(true);
@@ -285,9 +211,6 @@ export default function OnboardingPage() {
       {
         id: user.id,
         agent_type: agent,
-        account_size: accountSize,
-        risk_tolerance: riskTolerance,
-        experience_level: experience,
         onboarding_complete: true,
         updated_at: new Date().toISOString(),
       },
@@ -350,7 +273,7 @@ export default function OnboardingPage() {
                 transition={{ duration: 0.28, ease: "easeOut" }}
               >
                 <StepHeader
-                  eyebrow="Step 1 of 4"
+                  eyebrow="Step 1 of 3"
                   title="Before you begin."
                   subtitle="Please read and agree to the following before accessing Byzant."
                 />
@@ -452,7 +375,7 @@ export default function OnboardingPage() {
                 transition={{ duration: 0.28, ease: "easeOut" }}
               >
                 <StepHeader
-                  eyebrow="Step 2 of 4 (Optional)"
+                  eyebrow="Step 2 of 3 (Optional)"
                   title="Connect your broker."
                   subtitle="Connect your brokerage to enable one-click trade execution with your approval. Or skip — all Byzant data modules work without a connected broker."
                 />
@@ -593,7 +516,7 @@ export default function OnboardingPage() {
                 transition={{ duration: 0.28, ease: "easeOut" }}
               >
                 <StepHeader
-                  eyebrow="Step 3 of 4"
+                  eyebrow="Step 3 of 3"
                   title="Which model powers your agent?"
                   subtitle="Byzant modules work with any MCP-compatible AI agent."
                 />
@@ -692,57 +615,6 @@ export default function OnboardingPage() {
                   })}
                 </div>
 
-                <div style={{ display: "flex", gap: 12 }}>
-                  <BackButton onClick={() => setStep(1)} />
-                  <PrimaryButton
-                    disabled={!canContinueStep2}
-                    onClick={() => setStep(3)}
-                  >
-                    Continue
-                  </PrimaryButton>
-                </div>
-              </motion.div>
-            )}
-
-            {step === 3 && (
-              <motion.div
-                key="step-3"
-                variants={stepVariants()}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                transition={{ duration: 0.28, ease: "easeOut" }}
-              >
-                <StepHeader
-                  eyebrow="Step 4 of 4"
-                  title="Set your risk profile."
-                  subtitle="This helps your Risk Agent enforce the right rules for your account."
-                />
-
-                <QuestionBlock label="Account size">
-                  <SegmentedGroup
-                    options={ACCOUNT_SIZES}
-                    value={accountSize}
-                    onChange={setAccountSize}
-                  />
-                </QuestionBlock>
-
-                <QuestionBlock label="Risk tolerance">
-                  <SegmentedGroup
-                    options={RISK_LEVELS}
-                    value={riskTolerance}
-                    onChange={setRiskTolerance}
-                  />
-                </QuestionBlock>
-
-                <QuestionBlock label="Trading experience">
-                  <SegmentedGroup
-                    options={EXPERIENCE_LEVELS}
-                    value={experience}
-                    onChange={setExperience}
-                  />
-                </QuestionBlock>
-
                 {error && (
                   <div
                     style={{
@@ -761,8 +633,8 @@ export default function OnboardingPage() {
                   </div>
                 )}
 
-                <div style={{ display: "flex", gap: 12, marginTop: 8 }}>
-                  <BackButton onClick={() => setStep(2)} />
+                <div style={{ display: "flex", gap: 12 }}>
+                  <BackButton onClick={() => setStep(1)} />
                   <PrimaryButton
                     disabled={!canFinish}
                     loading={submitting}
@@ -827,31 +699,6 @@ function StepHeader({
       >
         {subtitle}
       </p>
-    </div>
-  );
-}
-
-function QuestionBlock({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div style={{ marginBottom: 24 }}>
-      <div
-        style={{
-          fontFamily: SORA,
-          fontSize: 13,
-          fontWeight: 500,
-          color: INK,
-          marginBottom: 10,
-        }}
-      >
-        {label}
-      </div>
-      {children}
     </div>
   );
 }
