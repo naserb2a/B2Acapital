@@ -81,21 +81,6 @@ const EXPERIENCE_LEVELS: { key: Experience; label: string }[] = [
   { key: "advanced", label: "Advanced" },
 ];
 
-const BROKERS: {
-  key: string;
-  name: string;
-  desc: string;
-  available: boolean;
-}[] = [
-  { key: "alpaca", name: "Alpaca", desc: "Commission-free API trading", available: true },
-  { key: "robinhood", name: "Robinhood", desc: "Retail brokerage", available: false },
-  { key: "td", name: "TD Ameritrade", desc: "Full-service brokerage", available: false },
-  { key: "webull", name: "Webull", desc: "Commission-free trading", available: false },
-  { key: "ibkr", name: "Interactive Brokers", desc: "Professional-grade platform", available: false },
-  { key: "etrade", name: "E*Trade", desc: "Full-service brokerage", available: false },
-  { key: "fidelity", name: "Fidelity", desc: "Full-service brokerage", available: false },
-];
-
 function Wordmark() {
   return (
     <Link
@@ -457,29 +442,19 @@ export default function OnboardingPage() {
                   subtitle="Byzant connects to your brokerage to surface trade opportunities for your approval."
                 />
 
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(2, 1fr)",
-                    gap: 12,
-                  }}
-                >
-                  {BROKERS.map((b) => (
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <div style={{ width: "100%", maxWidth: 480 }}>
                     <BrokerCard
-                      key={b.key}
-                      name={b.name}
-                      desc={b.desc}
-                      available={b.available}
-                      onConnect={
-                        b.available
-                          ? () =>
-                              setBrokerMessage(
-                                `Coming soon — ${b.name} connection will be available at launch.`
-                              )
-                          : undefined
+                      name="Alpaca"
+                      desc="Commission-free API trading"
+                      available
+                      onConnect={() =>
+                        setBrokerMessage(
+                          "Coming soon — Alpaca connection will be available at launch."
+                        )
                       }
                     />
-                  ))}
+                  </div>
                 </div>
 
                 {brokerMessage && (
@@ -496,7 +471,32 @@ export default function OnboardingPage() {
                   </p>
                 )}
 
-                <div style={{ textAlign: "center", marginTop: 24 }}>
+                <p
+                  style={{
+                    marginTop: 28,
+                    fontFamily: SORA,
+                    fontSize: 14,
+                    color: INK_MUTED,
+                    textAlign: "center",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  More brokers coming soon.{" "}
+                  <a
+                    href="https://tally.so/r/byzant-broker-request"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: TEAL,
+                      textDecoration: "none",
+                      fontWeight: 500,
+                    }}
+                  >
+                    Vote for yours →
+                  </a>
+                </p>
+
+                <div style={{ textAlign: "center", marginTop: 20 }}>
                   <button
                     type="button"
                     onClick={() => setStep(2)}
