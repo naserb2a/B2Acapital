@@ -17,7 +17,7 @@ const INK = "#F5F5F5";
 const INK_MUTED = "#64748b";
 const SURFACE = "#111318";
 
-type AgentType = "claude" | "gpt-4" | "other";
+type AgentType = "claude" | "gpt-4" | "openclaw" | "other";
 type AccountSize = "under_10k" | "10_50k" | "50_100k" | "100k_plus";
 type RiskTolerance = "conservative" | "moderate" | "aggressive";
 type Experience = "beginner" | "intermediate" | "advanced";
@@ -54,6 +54,11 @@ const AGENT_OPTIONS: {
     key: "gpt-4",
     name: "GPT-4 (OpenAI)",
     desc: "Fully compatible via MCP-enabled agent frameworks.",
+  },
+  {
+    key: "openclaw",
+    name: "OpenClaw",
+    desc: "Open-source autonomous trading agent. Native MCP support.",
   },
   {
     key: "other",
