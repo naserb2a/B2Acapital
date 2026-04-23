@@ -1,32 +1,56 @@
+"use client";
+
 import Sidebar from "@/components/dashboard/Sidebar";
 import Topbar from "@/components/dashboard/Topbar";
-import styles from "./dashboard.module.css";
+import { SYSTEM_FONT, ThemeProvider, tokens, useTheme } from "@/components/dashboard/ThemeProvider";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+function Shell({ children }: { children: React.ReactNode }) {
+  const { theme } = useTheme();
+  const t = tokens(theme);
+
   return (
     <div
-      className={styles.root}
       style={{
         display: "flex",
         height: "100vh",
-        background: "var(--db-bg)",
-        color: "var(--db-ink)",
+        background: t.contentBg,
+        color: t.textPrimary,
+        fontFamily: SYSTEM_FONT,
         overflow: "hidden",
       }}
     >
       <Sidebar />
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-        <Topbar />
-        <main style={{
+      <div
+        style={{
           flex: 1,
-          overflowY: "auto",
-          padding: "28px 28px",
-          scrollbarWidth: "thin",
-          scrollbarColor: "var(--db-border) transparent",
-        }}>
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
+          minWidth: 0,
+        }}
+      >
+        <Topbar />
+        <main
+          style={{
+            flex: 1,
+            overflowY: "auto",
+            padding: 32,
+            background: t.contentBg,
+            color: t.textPrimary,
+            fontFamily: SYSTEM_FONT,
+          }}
+        >
           {children}
         </main>
       </div>
     </div>
+  );
+}
+
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider>
+      <Shell>{children}</Shell>
+    </ThemeProvider>
   );
 }
