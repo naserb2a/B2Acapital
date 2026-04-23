@@ -419,25 +419,13 @@ export default function OnboardingPage() {
                     marginTop: 40,
                     marginBottom: 32,
                     fontFamily: SORA,
-                    fontSize: 14,
-                    color: INK_MUTED,
+                    fontSize: 13,
+                    color: "#64748b",
                     textAlign: "center",
                     lineHeight: 1.5,
                   }}
                 >
-                  More brokers coming soon.{" "}
-                  <a
-                    href="https://tally.so/r/byzant-broker-request"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: TEAL,
-                      textDecoration: "none",
-                      fontWeight: 500,
-                    }}
-                  >
-                    Vote for yours →
-                  </a>
+                  More brokerages coming soon.
                 </p>
 
                 <div style={{ display: "flex", justifyContent: "center" }}>
