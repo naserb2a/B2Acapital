@@ -9,7 +9,7 @@ const SCRIPT_SRC =
 export default function TradingViewWidget({
   symbol,
   height = 360,
-  style = "3",
+  style = "1",
 }: {
   symbol: string;
   height?: number;
@@ -38,13 +38,13 @@ export default function TradingViewWidget({
       theme,
       style,
       locale: "en",
-      hide_top_toolbar: true,
+      hide_top_toolbar: false,
       hide_legend: false,
-      hide_side_toolbar: true,
-      allow_symbol_change: false,
+      hide_side_toolbar: false,
+      allow_symbol_change: true,
       save_image: false,
       calendar: false,
-      withdateranges: false,
+      withdateranges: true,
       backgroundColor: theme === "dark" ? "#0d1117" : "#ffffff",
       gridColor: theme === "dark" ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)",
       support_host: "https://www.tradingview.com",
