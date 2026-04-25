@@ -101,7 +101,7 @@ export default function ApprovalsPage() {
         {/* Live signal chart */}
         <div style={{
           background: "var(--db-bg2)", border: "0.5px solid var(--db-border)",
-          borderRadius: 6, padding: 20, marginBottom: 32,
+          borderRadius: 6, padding: 20, marginBottom: 48,
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
             <div>
@@ -109,7 +109,7 @@ export default function ApprovalsPage() {
               <div style={{ fontSize: 11, color: "var(--db-ink-muted)", fontFamily: MONO, marginTop: 2 }}>Live price action · {selected.agentName}</div>
             </div>
           </div>
-          <TradingViewWidget symbol={selected.ticker} height={360} />
+          <TradingViewWidget symbol={selected.ticker} height={500} />
         </div>
 
         {/* Agent reasoning */}
