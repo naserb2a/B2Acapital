@@ -1,14 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import StatCard from "@/components/dashboard/StatCard";
 import ApprovalCard from "@/components/dashboard/ApprovalCard";
-import LineChart from "@/components/dashboard/LineChart";
+import TradingViewWidget from "@/components/dashboard/TradingViewWidget";
 import InsightBubble from "@/components/dashboard/InsightBubble";
 
 const MONO = "inherit";
 const SANS = "inherit";
-
-const NVDA_PTS = [112, 114, 111, 116, 115, 118, 117, 119, 118, 121, 118, 120, 118, 118];
 
 const APPROVALS = [
   {
@@ -52,8 +50,19 @@ const REASONING = [
   { label: "Action Proposed", text: "Enter long at market open. Scale to 50 shares. Hard stop at $113.20. Target $130.00.", accent: "amber" as const },
 ];
 
+function isTradeable(ticker: string): boolean {
+  return /^[A-Z]{1,5}$/.test(ticker);
+}
+
 export default function ApprovalsPage() {
   const [chatMsg, setChatMsg] = useState("");
+
+  const tradeableIndexes = useMemo(
+    () => APPROVALS.map((a, i) => (isTradeable(a.ticker) ? i : -1)).filter((i) => i >= 0),
+    []
+  );
+  const [selectedIdx, setSelectedIdx] = useState<number>(tradeableIndexes[0] ?? 0);
+  const selected = APPROVALS[selectedIdx];
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
@@ -74,24 +83,34 @@ export default function ApprovalsPage() {
 
       {/* Approval cards */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14 }}>
-        {APPROVALS.map(a => <ApprovalCard key={a.agentId + a.ticker} {...a} />)}
+        {APPROVALS.map((a, i) => {
+          const tradeable = isTradeable(a.ticker);
+          return (
+            <ApprovalCard
+              key={a.agentId + a.ticker}
+              {...a}
+              selected={tradeable && i === selectedIdx}
+              onSelect={tradeable ? () => setSelectedIdx(i) : undefined}
+            />
+          );
+        })}
       </div>
 
       {/* Bottom 2-col */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 14 }}>
-        {/* NVDA signal chart */}
+        {/* Live signal chart */}
         <div style={{
           background: "var(--db-bg2)", border: "0.5px solid var(--db-border)",
           borderRadius: 6, padding: 20,
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
             <div>
-              <div style={{ fontSize: 15, fontWeight: 500, color: "var(--db-ink)", fontFamily: SANS }}>NVDA Signal Analysis</div>
-              <div style={{ fontSize: 11, color: "var(--db-ink-muted)", fontFamily: MONO, marginTop: 2 }}>14-session price action · Alpha-1</div>
+              <div style={{ fontSize: 15, fontWeight: 500, color: "var(--db-ink)", fontFamily: SANS }}>{selected.ticker} Signal Analysis</div>
+              <div style={{ fontSize: 11, color: "var(--db-ink-muted)", fontFamily: MONO, marginTop: 2 }}>Live price action · {selected.agentName}</div>
             </div>
-            <div style={{ fontSize: 18, fontWeight: 700, color: "var(--db-green)", fontFamily: MONO }}>$118.40</div>
+            <div style={{ fontSize: 18, fontWeight: 700, color: "var(--db-green)", fontFamily: MONO }}>{selected.price}</div>
           </div>
-          <LineChart points={NVDA_PTS} color="var(--db-blue)" height={240} todayIdx={13} />
+          <TradingViewWidget symbol={selected.ticker} height={360} />
         </div>
 
         {/* Agent reasoning */}
@@ -100,7 +119,7 @@ export default function ApprovalsPage() {
           borderRadius: 6, padding: 20,
           display: "flex", flexDirection: "column", gap: 12,
         }}>
-          <div style={{ fontSize: 15, fontWeight: 500, color: "var(--db-ink)", fontFamily: SANS }}>Agent Reasoning · Alpha-1</div>
+          <div style={{ fontSize: 15, fontWeight: 500, color: "var(--db-ink)", fontFamily: SANS }}>Agent Reasoning · {selected.agentName}</div>
           {REASONING.map(r => <InsightBubble key={r.label} {...r} />)}
 
           {/* Chat input */}

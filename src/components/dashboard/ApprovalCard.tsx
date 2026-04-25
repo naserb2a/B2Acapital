@@ -9,22 +9,36 @@ interface ApprovalCardProps {
   desc: string;
   meta: { label: string; value: string }[];
   defaultApproved?: boolean;
+  selected?: boolean;
+  onSelect?: () => void;
 }
 
 export default function ApprovalCard({
   agentId, agentName, ticker, price, desc, meta, defaultApproved = false,
+  selected = false, onSelect,
 }: ApprovalCardProps) {
   const [approved, setApproved] = useState(defaultApproved);
 
+  const borderColor = selected
+    ? "rgba(153,225,217,0.45)"
+    : approved
+    ? "rgba(61,214,140,0.25)"
+    : "var(--db-border)";
+
   return (
-    <div style={{
-      background: "var(--db-bg2)",
-      border: `0.5px solid ${approved ? "rgba(61,214,140,0.25)" : "var(--db-border)"}`,
-      borderRadius: 6,
-      padding: 20,
-      display: "flex", flexDirection: "column", gap: 16,
-      transition: "border-color 0.25s",
-    }}>
+    <div
+      onClick={onSelect}
+      style={{
+        background: "var(--db-bg2)",
+        border: `0.5px solid ${borderColor}`,
+        borderRadius: 6,
+        padding: 20,
+        display: "flex", flexDirection: "column", gap: 16,
+        transition: "border-color 0.25s, box-shadow 0.25s",
+        cursor: onSelect ? "pointer" : "default",
+        boxShadow: selected ? "0 0 0 1px rgba(153,225,217,0.25) inset" : "none",
+      }}
+    >
       {/* Agent avatar + ticker */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -73,7 +87,7 @@ export default function ApprovalCard({
       {/* Buttons */}
       <div style={{ display: "flex", gap: 8 }}>
         <button
-          onClick={() => setApproved(true)}
+          onClick={(e) => { e.stopPropagation(); setApproved(true); }}
           style={{
             flex: 1, background: approved ? "var(--db-green-dim)" : "var(--db-blue)",
             color: approved ? "var(--db-green)" : "#fff",
@@ -87,7 +101,7 @@ export default function ApprovalCard({
           {approved ? "Approved ✓" : "Approve"}
         </button>
         <button
-          onClick={() => setApproved(false)}
+          onClick={(e) => { e.stopPropagation(); setApproved(false); }}
           style={{
             flex: 1, background: "var(--db-bg3)", color: "var(--db-ink-muted)",
             border: "1px solid var(--db-border)", borderRadius: 10, padding: "10px 0",
