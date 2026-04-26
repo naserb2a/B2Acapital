@@ -10,13 +10,26 @@ export default function TradingViewWidget({
   symbol,
   height = 360,
   style = "1",
+  onSymbolChange,
+  onPriceChange,
 }: {
   symbol: string;
   height?: number | string;
   style?: string;
+  onSymbolChange?: (symbol: string) => void;
+  onPriceChange?: (price: number) => void;
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { theme } = useTheme();
+
+  const onSymbolChangeRef = useRef(onSymbolChange);
+  const onPriceChangeRef = useRef(onPriceChange);
+  useEffect(() => {
+    onSymbolChangeRef.current = onSymbolChange;
+  }, [onSymbolChange]);
+  useEffect(() => {
+    onPriceChangeRef.current = onPriceChange;
+  }, [onPriceChange]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -65,6 +78,59 @@ export default function TradingViewWidget({
     };
   }, [symbol, theme, style]);
 
+  useEffect(() => {
+    function extractSymbol(d: unknown): string | null {
+      if (!d || typeof d !== "object") return null;
+      const o = d as Record<string, unknown>;
+      const candidates: unknown[] = [
+        o.symbol,
+        (o.data as Record<string, unknown> | undefined)?.symbol,
+        (o.payload as Record<string, unknown> | undefined)?.symbol,
+        o.ticker,
+        (o.data as Record<string, unknown> | undefined)?.ticker,
+      ];
+      for (const c of candidates) {
+        if (typeof c === "string" && c.length > 0 && c.length < 30) {
+          const cleaned = c.includes(":") ? c.split(":").pop()! : c;
+          if (/^[A-Z0-9._-]{1,20}$/.test(cleaned)) return cleaned;
+        }
+      }
+      return null;
+    }
+
+    function extractPrice(d: unknown): number | null {
+      if (!d || typeof d !== "object") return null;
+      const o = d as Record<string, unknown>;
+      const data = o.data as Record<string, unknown> | undefined;
+      const candidates: unknown[] = [
+        o.last_price,
+        o.price,
+        o.lp,
+        data?.last_price,
+        data?.price,
+        data?.lp,
+        data?.close,
+      ];
+      for (const c of candidates) {
+        if (typeof c === "number" && isFinite(c) && c > 0) return c;
+        if (typeof c === "string") {
+          const n = parseFloat(c);
+          if (isFinite(n) && n > 0) return n;
+        }
+      }
+      return null;
+    }
+
+    const handle = (e: MessageEvent) => {
+      const sym = extractSymbol(e.data);
+      if (sym) onSymbolChangeRef.current?.(sym);
+      const price = extractPrice(e.data);
+      if (price !== null) onPriceChangeRef.current?.(price);
+    };
+    window.addEventListener("message", handle);
+    return () => window.removeEventListener("message", handle);
+  }, []);
+
   return (
     <div
       ref={containerRef}
@@ -72,6 +138,7 @@ export default function TradingViewWidget({
       style={{
         width: "100%",
         height,
+        minHeight: typeof height === "number" ? height : undefined,
         borderRadius: 6,
         overflow: "hidden",
       }}

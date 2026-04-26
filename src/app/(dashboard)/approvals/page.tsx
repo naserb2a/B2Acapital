@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import StatCard from "@/components/dashboard/StatCard";
 import ApprovalCard from "@/components/dashboard/ApprovalCard";
 import TradingViewWidget from "@/components/dashboard/TradingViewWidget";
@@ -64,6 +64,20 @@ export default function ApprovalsPage() {
   const [selectedIdx, setSelectedIdx] = useState<number>(tradeableIndexes[0] ?? 0);
   const selected = APPROVALS[selectedIdx];
 
+  const [liveSymbol, setLiveSymbol] = useState<string | null>(null);
+  const [livePrice, setLivePrice] = useState<number | null>(null);
+
+  useEffect(() => {
+    setLiveSymbol(null);
+    setLivePrice(null);
+  }, [selectedIdx]);
+
+  const displaySymbol = liveSymbol ?? selected.ticker;
+  const displayPrice =
+    livePrice !== null
+      ? `$${livePrice.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+      : selected.price;
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
       {/* Header */}
@@ -104,17 +118,26 @@ export default function ApprovalsPage() {
           background: "var(--db-bg2)", border: "0.5px solid var(--db-border)",
           borderRadius: 6, padding: 20, marginBottom: 48,
           overflow: "hidden",
+          height: "calc(100vh - 160px)",
+          display: "flex", flexDirection: "column",
         }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, flexShrink: 0 }}>
             <div>
               <div style={{ fontSize: 15, fontWeight: 500, color: "var(--db-ink)", fontFamily: SANS }}>Live Chart · {selected.agentName}</div>
-              <div style={{ fontSize: 11, color: "var(--db-ink-muted)", fontFamily: MONO, marginTop: 2 }}>{selected.ticker} · Live price action</div>
+              <div style={{ fontSize: 11, color: "var(--db-ink-muted)", fontFamily: MONO, marginTop: 2 }}>{displaySymbol} · Live price action</div>
             </div>
             <div style={{ fontSize: 18, fontWeight: 700, color: "var(--db-green)", fontFamily: MONO }}>
-              {selected.price}
+              {displayPrice}
             </div>
           </div>
-          <TradingViewWidget symbol={selected.ticker} height="calc(100vh - 220px)" />
+          <div style={{ flex: 1, minHeight: 0 }}>
+            <TradingViewWidget
+              symbol={selected.ticker}
+              height="100%"
+              onSymbolChange={setLiveSymbol}
+              onPriceChange={setLivePrice}
+            />
+          </div>
         </div>
 
         {/* Agent reasoning */}
