@@ -287,16 +287,6 @@ export default function MarketplacePage() {
           }}
             onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--db-border-hi)"; e.currentTarget.style.color = "var(--db-ink)"; }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--db-border)"; e.currentTarget.style.color = "var(--db-ink-muted)"; }}>
-            Submit Module
-          </button>
-          <button style={{
-            background: "transparent", color: "var(--db-ink-muted)",
-            border: "0.5px solid var(--db-border)", borderRadius: 6,
-            padding: "7px 14px", fontSize: 12, cursor: "pointer",
-            transition: "border-color 0.15s, color 0.15s",
-          }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--db-border-hi)"; e.currentTarget.style.color = "var(--db-ink)"; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--db-border)"; e.currentTarget.style.color = "var(--db-ink-muted)"; }}>
             Filter
           </button>
         </div>
