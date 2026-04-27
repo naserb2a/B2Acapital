@@ -6,7 +6,7 @@ export type Theme = "dark" | "light";
 
 type Ctx = { theme: Theme; toggle: () => void; setTheme: (t: Theme) => void };
 const ThemeContext = createContext<Ctx>({
-  theme: "dark",
+  theme: "light",
   toggle: () => {},
   setTheme: () => {},
 });
@@ -14,13 +14,17 @@ const ThemeContext = createContext<Ctx>({
 const STORAGE_KEY = "byzant-theme";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === "light" || saved === "dark") setTheme(saved);
+      if (saved === "light" || saved === "dark") {
+        setTheme(saved);
+      } else {
+        localStorage.setItem(STORAGE_KEY, "light");
+      }
     } catch {}
     setMounted(true);
   }, []);
@@ -32,6 +36,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } catch {}
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme, mounted]);
+
+  useEffect(() => {
+    return () => {
+      document.documentElement.removeAttribute("data-theme");
+    };
+  }, []);
 
   const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
 

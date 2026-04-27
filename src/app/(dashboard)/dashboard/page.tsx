@@ -157,7 +157,7 @@ export default function DashboardPage() {
             Export Report
           </button>
           <button style={{
-            background: "var(--db-blue)", color: "#fff",
+            background: "var(--db-blue)", color: "#0a0a0a",
             border: "none", borderRadius: 8,
             padding: "7px 16px", fontSize: 12, fontWeight: 600, cursor: "pointer",
             fontFamily: SANS, transition: "opacity 0.15s",
@@ -205,7 +205,7 @@ export default function DashboardPage() {
         <button
           onClick={() => setModalOpen(true)}
           style={{
-            background: "#99E1D9", color: "#fff", border: "none",
+            background: "#99E1D9", color: "#0a0a0a", border: "none",
             borderRadius: 8, padding: "8px 18px",
             fontSize: 13, fontWeight: 500, cursor: "pointer",
             fontFamily: SANS, marginBottom: -1,
@@ -280,20 +280,20 @@ export default function DashboardPage() {
           <div
             onClick={e => e.stopPropagation()}
             style={{
-              background: "#0F0F0F",
-              border: "0.5px solid rgba(255,255,255,0.28)",
+              background: "var(--db-bg2)",
+              border: "0.5px solid var(--db-border-hi)",
               borderRadius: 16, padding: 24, width: 480,
               display: "flex", flexDirection: "column", gap: 20,
             }}
           >
             {/* Modal header */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span style={{ fontSize: 18, fontWeight: 500, color: "#F5F5F5", fontFamily: SANS }}>Add Widget</span>
+              <span style={{ fontSize: 18, fontWeight: 500, color: "var(--db-ink)", fontFamily: SANS }}>Add Widget</span>
               <button
                 onClick={() => setModalOpen(false)}
                 style={{
                   background: "none", border: "none", cursor: "pointer",
-                  fontSize: 18, color: "#666666", lineHeight: 1,
+                  fontSize: 18, color: "var(--db-ink-muted)", lineHeight: 1,
                   fontFamily: SANS, padding: "2px 6px",
                 }}
               >
@@ -317,15 +317,15 @@ export default function DashboardPage() {
                     }}
                   >
                     <div>
-                      <div style={{ fontSize: 14, fontWeight: 400, color: "#F5F5F5", fontFamily: SANS }}>{w.name}</div>
-                      <div style={{ fontSize: 12, fontWeight: 400, color: "#666666", fontFamily: SANS, marginTop: 2 }}>{w.desc}</div>
+                      <div style={{ fontSize: 14, fontWeight: 400, color: "var(--db-ink)", fontFamily: SANS }}>{w.name}</div>
+                      <div style={{ fontSize: 12, fontWeight: 400, color: "var(--db-ink-muted)", fontFamily: SANS, marginTop: 2 }}>{w.desc}</div>
                     </div>
                     <button
                       onClick={() => toggleWidget(w.id)}
                       style={{
                         flexShrink: 0, marginLeft: 16,
                         background: active ? "var(--db-green-dim)" : "#99E1D9",
-                        color: active ? "var(--db-green)" : "#fff",
+                        color: active ? "var(--db-green)" : "#0a0a0a",
                         border: active ? "1px solid rgba(61,214,140,0.3)" : "none",
                         borderRadius: 7, padding: "6px 14px",
                         fontSize: 12, fontWeight: 500, cursor: "pointer",

@@ -90,7 +90,7 @@ export default function ApprovalCard({
           onClick={(e) => { e.stopPropagation(); setApproved(true); }}
           style={{
             flex: 1, background: approved ? "var(--db-green-dim)" : "var(--db-blue)",
-            color: approved ? "var(--db-green)" : "#fff",
+            color: approved ? "var(--db-green)" : "#0a0a0a",
             border: approved ? "1px solid rgba(61,214,140,0.3)" : "none",
             borderRadius: 10, padding: "10px 0", fontSize: 12.5, fontWeight: 600,
             cursor: approved ? "default" : "pointer",

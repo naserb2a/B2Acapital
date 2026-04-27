@@ -164,7 +164,7 @@ export default function ApprovalsPage() {
               onBlur={e => (e.currentTarget.style.borderColor = "var(--db-border)")}
             />
             <button style={{
-              background: "var(--db-blue)", color: "#fff", border: "none",
+              background: "var(--db-blue)", color: "#0a0a0a", border: "none",
               borderRadius: 8, padding: "7px 12px", fontSize: 12, fontWeight: 600,
               cursor: "pointer", fontFamily: SANS, flexShrink: 0,
             }}>

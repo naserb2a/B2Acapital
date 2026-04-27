@@ -37,7 +37,7 @@ export default function AnalyticsPage() {
             Confidence 94%
           </span>
           <button style={{
-            background: "var(--db-blue)", color: "#fff", border: "none",
+            background: "var(--db-blue)", color: "#0a0a0a", border: "none",
             borderRadius: 8, padding: "7px 14px", fontSize: 12, fontWeight: 600,
             cursor: "pointer", fontFamily: SANS,
           }}>
